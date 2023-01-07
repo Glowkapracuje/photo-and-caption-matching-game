@@ -1,0 +1,23 @@
+.photo-widget-wrapper {
+    display: flex;
+    flex: 1 0 auto;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+
+.photo-wrapper img{
+    transition: 200ms;
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.photo-wrapper img:hover{
+    transform: scale(1.05);
+    filter: brightness(1.25);
+    transition: all .5s ease;
+}

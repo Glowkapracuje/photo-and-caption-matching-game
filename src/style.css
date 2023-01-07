@@ -25,6 +25,132 @@ body {
     margin: 0;
 }
 
-.test-message {
-    color: darkblue;
+/* 
+body
+    .main-layout-wrapper
+        .main-layout-header
+        .main-layout-content-wrapper
+            .content-layout-sidebar
+            .content-layout-page-wrapper
+                .page-container
+                    .matching-game-container
+                        .vehicles-container
+                        .navigation-container
+                        .statistics-container
+    .main-layout-footer
+*/
+
+.main-layout-wrapper {
+    background-image: url(./resources/images/backgrounds/background-with-track.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.main-layout-header {
+    background-color: var(--color-primary);
+    height: 2rem;
+    width: 100%;
+}
+
+.main-layout-content-wrapper {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4rem;
+}
+
+@media only screen and (max-width: 1200px) {
+    .main-layout-content-wrapper {
+        flex-direction: column-reverse;
+        width: 90%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .main-layout-content-wrapper {
+        flex-direction: column-reverse;
+        width: 100%;
+        gap: 0;
+    }
+}
+
+.content-layout-sidebar {
+    background-color: var(--color-sidebar-background);
+    border-radius: 1rem;
+    flex: 0.33;
+    display: flex;
+    justify-content: center;
+}
+
+@media only screen and (max-width: 480px) {
+    .content-layout-sidebar {
+        border-radius: 0;
+    }
+}
+
+.content-layout-page-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.matching-game-container {
+    background-color: var(--color-page-background);
+    padding: 4rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 1200px) {
+    .matching-game-container {
+        padding: 2rem;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .matching-game-container {
+        width: 61rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .matching-game-container {
+        border-radius: 0;
+        padding: 0 2rem 2rem 2rem;
+    }
+}
+
+.progress-bar-container {
+    display: flex;
+}
+
+/* /// Vehicles section /// */
+.vehicles-container {
+    display: flex;
+    align-items: stretch !important;
+    gap: 2rem;
+}
+
+@media only screen and (max-width: 600px) {
+    .vehicles-container {
+        flex-direction: column !important;
+    }
+}
+
