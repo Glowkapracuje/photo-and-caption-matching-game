@@ -6,15 +6,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="./resources/icons/glowkapracuje-favicon-32x32.png"/>
+    <link rel="icon" type="image/png" href="./resources/icons/glowkapracuje-favicon-32x32.png" />
     <link rel='stylesheet' type='text/css' media='screen' href='./style.css'>
+    <!-- HELPERS -->
+    <script src="./helpers/string-helper.js"></script>
+    <script src="./helpers/array-helper.js"></script>
+    <!-- SERVICES -->
+    <script src="./services/language-service/language-service.js"></script>
+    <script src="./services/vehicle-list-service/vehicle-list-service.js"></script>
+    <script src="./services/color-theme-service/color-theme-service.js"></script>
+    <script src="./services/stopwatch-service/stopwatch-service.js"></script>
+    <script src="./services/speech-synthesis-service/speech-synthesis-service.js"></script>
+    <script src="./services/game-state-service/game-state-service.js"></script>
+    <!-- WIDGETS -->
+    <script src="./widgets/checkbox-widget/checkbox-widget.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./widgets/checkbox-widget/checkbox-widget.css'>
+    <script src="./widgets/radio-widget/radio-widget.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./widgets/radio-widget/radio-widget.css'>
+    <script src="./widgets/number-spinner-widget/number-spinner-widget.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen'
+        href='./widgets/number-spinner-widget/number-spinner-widget.css'>
+    <script src="./widgets/progress-bar-widget/progress-bar.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./widgets/progress-bar-widget/progress-bar.css'>
+    <script src="./widgets/photo-widget/photo-widget.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./widgets/photo-widget/photo-widget.css'>
+    <script src="./widgets/caption-widget/caption-widget.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./widgets/caption-widget/caption-widget.css'>
+    <script src="./widgets/tag-widget/tag-widget.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./widgets/tag-widget/tag-widget.css'>
+    <script src="./widgets/slider-widget/slider-widget.js"></script>
+    <link rel='stylesheet' type='text/css' media='screen' href='./widgets/slider-widget/slider-widget.css'>
+    <!-- MAIN SCRIPT -->
     <script src='./index.js'></script>
 </head>
 
 <body>
-
-    <p class="test-message" >Initial setup has been done.</p>
-    
+    <div class="main-layout-wrapper">
+        <header class="main-layout-header"></header>
+        <div class="main-layout-content-wrapper">
+            <div class="content-layout-sidebar">
+                <div class="sidebar-container" id="sidebar-container"></div>
+            </div>
+            <div class="content-layout-page-wrapper">
+                <div class="page-container">
+                    <div class="matching-game-container">
+                        <div class="vehicles-container columns-40-60" id="vehicles-container"></div>
+                        <div class="navigation-container" id="navigation-container"></div>
+                        <div class="progress-bar-container" id="progress-bar-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="main-layout-footer-wrapper">
+            <div class="footer-container" id="footer-container"></div>
+        </footer>
+    </div>
 </body>
 
 </html>

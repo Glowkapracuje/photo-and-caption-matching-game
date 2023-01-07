@@ -1,0 +1,110 @@
+input[type="checkbox"] {
+    cursor: pointer;
+    border-radius: 0.5rem;
+    font-size: x-large;
+    position: relative;
+    aspect-ratio: 1;
+    height: 60px;
+    color: var(--font-color);
+}
+
+.small input[type="checkbox"] {
+    font-size: large;
+    height: 28px;
+    font-weight: 700;
+}
+
+.big input[type="checkbox"] {
+    font-size: x-large;
+    height: 60px;
+    font-weight: 400;
+}
+
+input[type="checkbox"]:focus-visible {
+    outline: none;
+}
+
+input[type="checkbox"]:hover::before {
+    transition: 200ms;
+    border: 2px solid var(--color-secondary);
+    border-color: var(--color-secondary--dark);
+}
+
+input[type="checkbox"]::before {
+    transition: 200ms;
+    content: '';
+    color: var(--font-color);
+    font-weight: 700;
+    border-radius: 0.5rem;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: calc((100% /2));
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    border: 2px solid var(--color-secondary);
+    background-color: var(--color-secondary--light);
+}
+
+input[type="checkbox"]:checked::before {
+    transition: 200ms;
+    border: 2px solid var(--color-secondary);
+    background-color: var(--color-secondary);
+}
+
+input[type="checkbox"]::after {
+    transition: 200ms;
+    content: '✕';
+    color: var(--color-secondary);
+    position: absolute;
+    top: calc((100% /2));
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+input[type=checkbox]::after {
+    transition: 200ms;
+    content: '✕';
+    color: var(--color-secondary);
+    position: absolute;
+    top: calc((100% /2));
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+}
+
+input[type="checkbox"]:checked::after {
+    transition: 200ms;
+    content: '✓';
+    color: var(--font-color);
+}
+
+input[type="checkbox"]:checked:hover::before {
+    border-color: var(--color-secondary--dark);
+}
+
+.checkbox-widget-container {
+    color: var(--color-secondary--dark);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.checkbox-widget-columns-spread-out {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.checkbox-widget-columns-spread-out > *:first-child {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.checkbox-widget-columns-spread-out > *:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+}

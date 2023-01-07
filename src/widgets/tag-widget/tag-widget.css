@@ -1,0 +1,72 @@
+.tag-widget-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: stretch;
+}
+
+.pill-tag-wrapper {
+    font-size: small;
+    /* text-transform: uppercase; */
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 1rem;
+    flex: 1 0 auto;
+    padding: 0.25rem 0.5rem;
+    border: 2px solid var(--color-secondary);
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    transition: 200ms;
+}
+
+.pill-tag-name {
+    /* padding: 0.25rem; */
+    color: var(--color-secondary);
+    text-align: center;
+    transition: 200ms;
+}
+
+.pill-tag-number {
+    /* padding: 0.25rem; */
+    color: var(--color-secondary);
+    font-weight: 700;
+    border-radius: 0.5rem;
+    text-align: center;
+    transition: 200ms;
+}
+
+
+.pill-tag-wrapper:hover .pill-tag-number{
+    color: var(--color-secondary--dark);
+}
+
+.pill-tag-wrapper:hover .pill-tag-name{
+    color: var(--color-secondary--dark);
+}
+
+.pill-tag-wrapper:hover {
+    border-color: var(--color-secondary--dark);
+    color: var(--color-secondary--dark);
+    /* padding: 0.25rem 1rem; */
+}
+
+/* .pill-tag-name:hover {
+    border-color: var(--color-secondary--dark);
+    color: var(--color-secondary--dark);
+}
+
+.pill-tag-number:hover {
+    border-color: var(--color-secondary--dark);
+    color: var(--color-secondary--dark);
+} */
+
+
+
+
+/* .pill-tag-wrapper > *:hover,
+.pill-tag-wrapper:hover {
+    border-color: var(--color-secondary--dark);
+    color: var(--color-secondary--dark);
+} */
+

@@ -1,0 +1,117 @@
+.caption-widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    gap: 1rem;
+    flex: 1 0 auto;
+}
+
+.caption-wrapper {
+    display: flex;
+    flex: 1 0 auto;
+}
+
+.caption-wrapper input {
+    display: none
+}
+
+.caption-wrapper input[type="radio"]:checked+label {
+    color: var(--color-white);
+    font-weight: 700;
+    background-color: var(--color-primary--dark);
+    border-color: var(--color-primary--dark);
+}
+
+.caption-label-wrapper {
+    position: re;
+}
+
+/* Element section */
+.caption-label {
+    cursor: pointer;
+    
+    font-family: Ubuntu;
+    font-size: x-large;
+    background-color: var(--color-primary--light);
+    border: 2px solid var(--color-primary);
+    border-radius: 0.5rem;
+    transition: 200ms;
+    
+    flex: 1 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transform-style: preserve-3d;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+
+    position: relative;
+}
+
+.caption-label:hover {
+    border-color: var(--color-primary--dark);
+}
+
+.caption-label:active {
+    background-color: var(--color-primary);
+    transition: 200ms;
+    margin-top: 0.5rem;
+    margin-bottom: 0rem;
+}
+
+.caption-label:focus-visible {
+    outline: none;
+}
+/* After section */
+.caption-label::after {
+    content: '';
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: 0.5rem;
+    transition: 200ms;
+    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: calc((100% /2) + 0.5rem);
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%) translateZ(-1px);
+}
+
+.caption-label:active::after {
+    background-color: var(--color-primary--dark);
+    transition: 200ms;
+    top: calc((100% /2));
+}
+
+.caption-label-symbol {
+    display: flex;
+    width: 4rem;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    color: var(--color-primary);
+    transition: 200ms;
+    
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+}
+
+.caption-label-symbol--neutral::after {
+    content: '?';
+    font-weight: 400;
+}
+
+.caption-label-symbol--correct-answer::after {
+    content: '✓';
+    color: var(--color-tertiary--light);
+    font-weight: 700;
+}
+
+.caption-label-symbol--wrong-answer::after {
+    content: '✕';
+    font-weight: 700;
+}
