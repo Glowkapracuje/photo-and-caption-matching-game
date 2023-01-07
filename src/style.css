@@ -19,6 +19,7 @@
 
     --font-color--light: white;
     --font-color--dark: #212b40;
+    --font-color--default:#212b40;
 }
 
 body {
