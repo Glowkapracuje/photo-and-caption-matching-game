@@ -5,7 +5,7 @@ input[type="checkbox"] {
     position: relative;
     aspect-ratio: 1;
     height: 60px;
-    color: var(--font-color);
+    color: var(--font-color--default);
 }
 
 .small input[type="checkbox"] {
@@ -33,7 +33,7 @@ input[type="checkbox"]:hover::before {
 input[type="checkbox"]::before {
     transition: 200ms;
     content: '';
-    color: var(--font-color);
+    color: var(--font-color--default);
     font-weight: 700;
     border-radius: 0.5rem;
     position: absolute;
@@ -75,7 +75,7 @@ input[type=checkbox]::after {
 input[type="checkbox"]:checked::after {
     transition: 200ms;
     content: '✓';
-    color: var(--font-color);
+    color: var(--font-color--default);
 }
 
 input[type="checkbox"]:checked:hover::before {

@@ -21,7 +21,7 @@
     border: none;
     border-radius: 0.5rem;
     font-size: x-large;
-    color: var(--font-color);
+    color: var(--font-color--default);
     border: 2px solid white;
     transition: 200ms;
     text-align: center;
