@@ -3,7 +3,7 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked+label {
-    color: var(--font-color);
+    color: var(--font-color--default);
     background-color: var(--color-secondary);
     border-color: var(--color-secondary);
 }
