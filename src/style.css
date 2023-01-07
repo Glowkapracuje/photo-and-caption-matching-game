@@ -1,0 +1,30 @@
+:root {
+    --color-primary: #aed6dc;
+    --color-primary--light: #e0ffff;
+    --color-primary--dark: #7ea5aa;
+    --color-secondary: #ff9a8d;
+    --color-secondary--light: #ffccbd;
+    --color-secondary--dark: #c96a60;
+    --color-tertiary: #64dd17;
+    --color-tertiary--light: #9cff57;
+    --color-tertiary--dark: #1faa00;
+    --color-quaternary: #ff6d00;
+    --color-quaternary--light: #ff9e40;
+    --color-quaternary--dark: #c43c00;
+
+    --color-page-background: #e0ffff;
+    --color-sidebar-background: #ffccbd;
+
+    --color-white: white;
+
+    --font-color-light: white;
+    --font-color-dark: #212b40;
+}
+
+body {
+    margin: 0;
+}
+
+.test-message {
+    color: darkblue;
+}
