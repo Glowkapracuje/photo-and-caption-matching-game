@@ -10,11 +10,10 @@ Your challenge is to **match the name** (caption) **to the photo**.
 
 <!-- LIVE DEMO -->
 ## Live demo 
-based on the last version that has been merged to the `main` branch:</br>
+Based on the latest release:</br>
 ***https://glowkapracuje.github.io/photo-and-caption-matching-game/***
 
-
-![image info](./src/resources/images/demo-screens/monster-truck-continue.jpg)
+[<img src="./src/resources/images/demo-screens/01-main-demo-image.jpg" width="100%"/>](./src/resources/images/demo-screens/01-main-demo-image.jpg)
 
 
 <!-- ROADMAP -->
@@ -53,15 +52,15 @@ based on the last version that has been merged to the `main` branch:</br>
 - [ ] **Provide different input types**
     - [x] Captions as buttons
     - [ ] Text input field
-   
+
+
 <!-- TECHNICAL STUFF -->
 ## Technical stuff
 
 * This project does not use any external libriaries.</br>
 * The whole js code has been written using Vanilla JS ( ͡° ͜ʖ ͡°)</br>
-* No bundler has been used 
 
-  
+
 <!-- LICENSE -->
 ## License
 
