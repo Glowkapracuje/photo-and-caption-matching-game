@@ -14,6 +14,9 @@ based on the last version that has been merged to the `main` branch:</br>
 ***https://glowkapracuje.github.io/photo-and-caption-matching-game/***
 
 
+![image info](./src/resources/images/demo-screens/monster-truck-continue.jpg)
+
+
 <!-- ROADMAP -->
 ## Roadmap
 
@@ -47,7 +50,10 @@ based on the last version that has been merged to the `main` branch:</br>
 - [ ] **Improve functionality**
     - [x] Avoid generating random items from the entire list
     - [ ] Create game flow service with improved statuses
-  
+- [ ] **Provide different input types**
+    - [x] Captions as buttons
+    - [ ] Text input field
+   
   
 <!-- LICENSE -->
 ## License
