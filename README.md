@@ -14,6 +14,9 @@ based on the last version that has been merged to the `main` branch:</br>
 ***https://glowkapracuje.github.io/photo-and-caption-matching-game/***
 
 
+![image info](./src/resources/images/demo-screens/monster-truck-continue.jpg)
+
+
 <!-- ROADMAP -->
 ## Roadmap
 
