@@ -54,6 +54,13 @@ based on the last version that has been merged to the `main` branch:</br>
     - [x] Captions as buttons
     - [ ] Text input field
    
+<!-- TECHNICAL STUFF -->
+## Technical stuff
+
+* This project does not use any external libriaries.</br>
+* The whole js code has been written using Vanilla JS ( ͡° ͜ʖ ͡°)</br>
+* No bundler has been used 
+
   
 <!-- LICENSE -->
 ## License
