@@ -88,11 +88,12 @@ function generateSidebarWidgets() {
     let inputForSoundToggle = generateInputForSoundToggle();
     let inputForSpeachSynthesisToggle = generateInputForSpeachSynthesisToggle()
     let inputForVehiclesOrderType = generateInputForVehiclesOrderType();
+    let inputForChangeItemList = generateInputChangingItemList();
     let inputForChangingTheme = generateInputForChangingColorTheme();
     let inputForLanguageChange = generateInputForChangingLanguage();
     let pillTags = generatePillTags();
 
-    firstSlideWidgets.push(inputForSoundToggle, inputForSpeachSynthesisToggle, inputForCaptionsNumber, inputForLanguageChange, inputForVehiclesOrderType, inputForChangingTheme);
+    firstSlideWidgets.push(inputForSoundToggle, inputForSpeachSynthesisToggle, inputForCaptionsNumber, inputForLanguageChange, inputForVehiclesOrderType, inputForChangeItemList, inputForChangingTheme);
 
     secondSlideWidgets.push(pillTags);
 
@@ -164,7 +165,7 @@ function generateInputForVehiclesOrderType() {
             name: 'radio-widget-vehicles-order',
             labelText: 'Alphabetical',
             labelStyle: '',
-            checked: (GameStateServiceIIFE.getGameState().vehiclesListSortingOrder === VehicleListServiceIIFE.sortType.alphabetical),
+            checked: (GameStateServiceIIFE.getGameState().itemListSortingOrder === VehicleListServiceIIFE.sortType.alphabetical),
             onChangeFunctions: [GameStateServiceIIFE.updateGameStateWithVehiclesOrderType]
         },
         // {
@@ -173,7 +174,7 @@ function generateInputForVehiclesOrderType() {
         //     name: 'radio-widget-vehicles-order',
         //     labelText: 'Category',
         //     labelStyle: '',
-        //     checked: (GameStateServiceIIFE.getGameState().vehiclesListSortingOrder === VehicleListServiceIIFE.sortType.category),
+        //     checked: (GameStateServiceIIFE.getGameState().itemListSortingOrder === VehicleListServiceIIFE.sortType.category),
         //     onChangeFunctions: [GameStateServiceIIFE.updateGameStateWithVehiclesOrderType]
         // },
         {
@@ -182,7 +183,7 @@ function generateInputForVehiclesOrderType() {
             name: 'radio-widget-vehicles-order',
             labelText: 'Random',
             labelStyle: '',
-            checked: (GameStateServiceIIFE.getGameState().vehiclesListSortingOrder === VehicleListServiceIIFE.sortType.random),
+            checked: (GameStateServiceIIFE.getGameState().itemListSortingOrder === VehicleListServiceIIFE.sortType.random),
             onChangeFunctions: [GameStateServiceIIFE.updateGameStateWithVehiclesOrderType]
         }
     ];
@@ -190,6 +191,71 @@ function generateInputForVehiclesOrderType() {
     return RadioWidgetIIFE.generateRadioWidget(radioWidgetContainerStyle, radios, title);
 }
 
+function generateInputChangingItemList() {
+    let title = 'Item list'
+    let radioWidgetContainerStyle = '';
+    let radios = [
+        {
+            id: 'radio-widget-change-item-list-vehicle',
+            value: VehicleListServiceIIFE.availableListNames.vehicles,
+            name: 'radio-widget-change-item-list',
+            labelText: 'Vehicles',
+            labelStyle: '',
+            checked: (GameStateServiceIIFE.getGameState().currentItemListName === VehicleListServiceIIFE.availableListNames.vehicles),
+            onChangeFunctions: [
+                GameStateServiceIIFE.updateGameStateWithChangingItemList, 
+                GameStateServiceIIFE.updateGameStateWithResettingMatchCounter,
+                generateMatchingGameContent, 
+                resetNavigationButton, 
+                generateOrUpdateProgressBar
+            ]
+        },
+        {
+            id: 'radio-widget-change-item-list-animals',
+            value: VehicleListServiceIIFE.availableListNames.animals,
+            name: 'radio-widget-change-item-list',
+            labelText: 'Animals',
+            labelStyle: '',
+            checked: (GameStateServiceIIFE.getGameState().currentItemListName === VehicleListServiceIIFE.availableListNames.animals),
+            onChangeFunctions: [
+                GameStateServiceIIFE.updateGameStateWithChangingItemList, 
+                GameStateServiceIIFE.updateGameStateWithResettingMatchCounter,
+                generateMatchingGameContent, 
+                resetNavigationButton, 
+                generateOrUpdateProgressBar
+            ]
+        },
+    ];
+
+    return RadioWidgetIIFE.generateRadioWidget(radioWidgetContainerStyle, radios, title);
+}
+
+function generateInputForChangingLanguage() {
+    let radioWidgetContainerStyle = '';
+    let title = 'Captions language'
+    let radioWidgetProperties = [
+        {
+            id: 'radio-widget-en-language',
+            value: LanguageServiceIIFE.getLanguages().en,
+            name: 'radio-widget-language',
+            labelText: 'EN',
+            labelStyle: '',
+            checked: (GameStateServiceIIFE.getGameState().language === LanguageServiceIIFE.getLanguages().en),
+            onChangeFunctions: [GameStateServiceIIFE.updateGameStateWithLanguage, generateMatchingGameContent]
+        },
+        {
+            id: 'radio-widget-pl-language',
+            value: LanguageServiceIIFE.getLanguages().pl,
+            name: 'radio-widget-language',
+            labelText: 'PL',
+            labelStyle: '',
+            checked: (GameStateServiceIIFE.getGameState().language === LanguageServiceIIFE.getLanguages().pl),
+            onChangeFunctions: [GameStateServiceIIFE.updateGameStateWithLanguage, generateMatchingGameContent]
+        }
+    ];
+
+    return RadioWidgetIIFE.generateRadioWidget(radioWidgetContainerStyle, radioWidgetProperties, title);
+}
 
 function generateInputForChangingColorTheme() {
     let title = 'Color theme'
@@ -222,33 +288,6 @@ function generateInputForChangingColorTheme() {
         //     checked: (GameStateServiceIIFE.getGameState().colorTheme === ColorThemeServiceIIFE.colorThemeNames.dark),
         //     onChangeFunctions: [GameStateServiceIIFE.updateGameStateWithColorTheme]
         // }
-    ];
-
-    return RadioWidgetIIFE.generateRadioWidget(radioWidgetContainerStyle, radioWidgetProperties, title);
-}
-
-function generateInputForChangingLanguage() {
-    let radioWidgetContainerStyle = '';
-    let title = 'Captions language'
-    let radioWidgetProperties = [
-        {
-            id: 'radio-widget-en-language',
-            value: LanguageServiceIIFE.getLanguages().en,
-            name: 'radio-widget-language',
-            labelText: 'EN',
-            labelStyle: '',
-            checked: (GameStateServiceIIFE.getGameState().language === LanguageServiceIIFE.getLanguages().en),
-            onChangeFunctions: [GameStateServiceIIFE.updateGameStateWithLanguage, generateMatchingGameContent]
-        },
-        {
-            id: 'radio-widget-pl-language',
-            value: LanguageServiceIIFE.getLanguages().pl,
-            name: 'radio-widget-language',
-            labelText: 'PL',
-            labelStyle: '',
-            checked: (GameStateServiceIIFE.getGameState().language === LanguageServiceIIFE.getLanguages().pl),
-            onChangeFunctions: [GameStateServiceIIFE.updateGameStateWithLanguage, generateMatchingGameContent]
-        }
     ];
 
     return RadioWidgetIIFE.generateRadioWidget(radioWidgetContainerStyle, radioWidgetProperties, title);
@@ -405,7 +444,7 @@ function generateOrUpdateProgressBar() {
 }
 
 function generateOrUpdateVehiclePhoto() {
-    const photosUrl = './resources/images/';
+    const photosUrl = GameStateServiceIIFE.getGameState().currentListPhotosPath;
 
     let photoWidgetProperties = {
         customWidgetWrapperStyle: '',

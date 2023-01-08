@@ -1,12 +1,14 @@
 const GameStateServiceIIFE = (function () {
 
     const GAME_STATE = {
-        vehicleList: VehicleListServiceIIFE.vehicles,
-        currentVehicle: VehicleListServiceIIFE.vehicles[0],
-        currentVehicleId: VehicleListServiceIIFE.vehicles[0].id,
+        currentItemListName: VehicleListServiceIIFE.availableListNames.vehicles,
+        vehicleList: VehicleListServiceIIFE.getCurrentList(),
+        currentVehicle: VehicleListServiceIIFE.getCurrentList()[0],
+        currentVehicleId: VehicleListServiceIIFE.getCurrentList()[0].id,
         currentVehicleIndex: 0,
         currentCaptions: [],
-        vehiclesListSortingOrder: VehicleListServiceIIFE.sortType.alphabetical,
+        currentListPhotosPath: VehicleListServiceIIFE.getPhotoFilePath(),
+        itemListSortingOrder: VehicleListServiceIIFE.sortType.alphabetical,
         isMatch: false,
         captionNumber: 3,
         maxCaptionNumber: 4,
@@ -15,6 +17,25 @@ const GameStateServiceIIFE = (function () {
         chosenCaptionId: null,
         colorTheme: ColorThemeServiceIIFE.colorThemeNames.light,
         language: LanguageServiceIIFE.getLanguages().en
+    }
+
+    function updateGameStateWithChangingItemList(event) {
+        let listName = event.target.value
+        VehicleListServiceIIFE.setCurrentList(listName);
+        sortVehicleList(GAME_STATE.itemListSortingOrder);
+        GAME_STATE.currentItemListName = listName;
+        GAME_STATE.vehicleList = VehicleListServiceIIFE.getCurrentList();
+        GAME_STATE.currentVehicle = VehicleListServiceIIFE.getCurrentList()[0];
+        GAME_STATE.currentVehicleId = VehicleListServiceIIFE.getCurrentList()[0].id;
+        GAME_STATE.currentVehicleIndex = 0;
+        GAME_STATE.currentListPhotosPath = VehicleListServiceIIFE.getPhotoFilePath();
+        GAME_STATE.isMatch = false;
+        updateCurrentCaptionsArray()
+    }
+
+    function updateCurrentCaptionsArray() {
+        const nextCaptions = generateCurrentCaptionsArray();
+        GAME_STATE.currentCaptions = nextCaptions;
     }
 
     function generateCurrentCaptionsArray() {
@@ -26,11 +47,6 @@ const GameStateServiceIIFE = (function () {
         ArrayHelperIIFE.shuffleArray(requiredVehicleAndOtherRandom);
 
         return requiredVehicleAndOtherRandom;
-    }
-
-    function updateCurrentCaptionsArray() {
-        const nextCaptions = generateCurrentCaptionsArray();
-        GAME_STATE.currentCaptions = nextCaptions;
     }
 
     function updateGameStateWithLanguage(event) {
@@ -59,24 +75,24 @@ const GameStateServiceIIFE = (function () {
 
     }
 
-    function updateGameStateCurrentVehicle(nextVehicleIndex) {
-        sortVehicleList(GAME_STATE.vehiclesListSortingOrder)
-        GAME_STATE.currentVehicle = GAME_STATE.vehicleList[nextVehicleIndex];
-        GAME_STATE.currentVehicleId = GAME_STATE.vehicleList[nextVehicleIndex].id;
-        GAME_STATE.currentVehicleIndex = nextVehicleIndex;
+    function updateGameStateCurrentVehicle(nextItemIndex) {
+        sortVehicleList(GAME_STATE.itemListSortingOrder)
+        GAME_STATE.currentVehicle = GAME_STATE.vehicleList[nextItemIndex];
+        GAME_STATE.currentVehicleId = GAME_STATE.vehicleList[nextItemIndex].id;
+        GAME_STATE.currentVehicleIndex = nextItemIndex;
     }
 
-    function updateGameStateCurrentVehicleId(nextVehicleId) {
-        let nextVehicleIndex = 0;
-        sortVehicleList(GAME_STATE.vehiclesListSortingOrder)
-        VehicleListServiceIIFE.vehicles.forEach(vehicle => {
-            if (vehicle.id === nextVehicleId) {
-                nextVehicleIndex = VehicleListServiceIIFE.vehicles.indexOf(vehicle);
+    function updateGameStateCurrentVehicleId(nextItemId) {
+        let nextItemIndex = 0;
+        sortVehicleList(GAME_STATE.itemListSortingOrder)
+        VehicleListServiceIIFE.getCurrentList().forEach(item => {
+            if (item.id === nextItemId) {
+                nextItemIndex = VehicleListServiceIIFE.getCurrentList().indexOf(item);
             }
         })
-        GAME_STATE.currentVehicle = GAME_STATE.vehicleList[nextVehicleIndex];
-        GAME_STATE.currentVehicleId = GAME_STATE.vehicleList[nextVehicleIndex].id;
-        GAME_STATE.currentVehicleIndex = nextVehicleIndex;
+        GAME_STATE.currentVehicle = GAME_STATE.vehicleList[nextItemIndex];
+        GAME_STATE.currentVehicleId = GAME_STATE.vehicleList[nextItemIndex].id;
+        GAME_STATE.currentVehicleIndex = nextItemIndex;
     }
 
     function rotateCurrentVehicleIndex() {
@@ -87,19 +103,19 @@ const GameStateServiceIIFE = (function () {
     function sortVehicleList(sortType) {
         switch (sortType) {
             case VehicleListServiceIIFE.sortType.alphabetical:
-                GAME_STATE.vehiclesListSortingOrder = VehicleListServiceIIFE.sortType.alphabetical;
+                GAME_STATE.itemListSortingOrder = VehicleListServiceIIFE.sortType.alphabetical;
                 VehicleListServiceIIFE.sortListAlphabetically();
                 break;
             case VehicleListServiceIIFE.sortType.category:
-                GAME_STATE.vehiclesListSortingOrder = VehicleListServiceIIFE.sortType.category;
+                GAME_STATE.itemListSortingOrder = VehicleListServiceIIFE.sortType.category;
                 VehicleListServiceIIFE.sortListByCategory()
                 break;
             case VehicleListServiceIIFE.sortType.random:
-                GAME_STATE.vehiclesListSortingOrder = VehicleListServiceIIFE.sortType.random;
+                GAME_STATE.itemListSortingOrder = VehicleListServiceIIFE.sortType.random;
                 VehicleListServiceIIFE.sortListRandomly()
                 break;
             default:
-                GAME_STATE.vehiclesListSortingOrder = VehicleListServiceIIFE.sortType.alphabetical;
+                GAME_STATE.itemListSortingOrder = VehicleListServiceIIFE.sortType.alphabetical;
                 VehicleListServiceIIFE.sortListAlphabetically()
         }
     }
@@ -108,7 +124,7 @@ const GameStateServiceIIFE = (function () {
         let inputValue = event.target.value
         try {
             if (Object.values(VehicleListServiceIIFE.sortType).includes(inputValue)) {
-                GAME_STATE.vehiclesListSortingOrder = inputValue;
+                GAME_STATE.itemListSortingOrder = inputValue;
             }
             else {
                 throw new ErrorHandlerIIFE.ParameterException(
@@ -117,7 +133,7 @@ const GameStateServiceIIFE = (function () {
             }
         }
         catch (e) {
-            GAME_STATE.vehiclesListSortingOrder = VehicleListServiceIIFE.sortType.alphabetical
+            GAME_STATE.itemListSortingOrder = VehicleListServiceIIFE.sortType.alphabetical
             console.log(e.message);
         }
     }
@@ -141,6 +157,10 @@ const GameStateServiceIIFE = (function () {
 
     function updateGameStateWithMatchCounter() {
         GAME_STATE.matchesCount++;
+    }
+
+    function updateGameStateWithResettingMatchCounter() {
+        GAME_STATE.matchesCount = 0;
     }
 
     function updateGameStateWithChosenCaptionId(event) {
@@ -176,6 +196,8 @@ const GameStateServiceIIFE = (function () {
 
         updateGameStateWithMatchCounter: function () { return updateGameStateWithMatchCounter() },
 
+        updateGameStateWithResettingMatchCounter: function () { return updateGameStateWithResettingMatchCounter() },
+
         updateGameStateWithChosenCaptionId: function (event) { return updateGameStateWithChosenCaptionId(event) },
 
         clearChosenCaptionId: function () { return clearChosenCaptionId() },
@@ -187,6 +209,8 @@ const GameStateServiceIIFE = (function () {
         updateGameStateWithLanguage: function (event) { return updateGameStateWithLanguage(event) },
 
         updateCurrentCaptionsArray: function () { return updateCurrentCaptionsArray() },
+
+        updateGameStateWithChangingItemList: function (event) { return updateGameStateWithChangingItemList(event) },
     }
 
 })();
