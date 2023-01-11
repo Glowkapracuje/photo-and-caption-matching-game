@@ -30,9 +30,9 @@ const StopwatcServiceIIFE = (function () {
         running = false;
         endTime = new Date();
 
-        const seconds = (endTime.getTime() - startTime.getTime()) / 1000;
-        currentDuration = seconds;
-        totalTime += seconds;
+        const miliseconds = (endTime.getTime() - startTime.getTime());
+        currentDuration = miliseconds;
+        totalTime += miliseconds;
 
         calculateAverageTime();
     };
