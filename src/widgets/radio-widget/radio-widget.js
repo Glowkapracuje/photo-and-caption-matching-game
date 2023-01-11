@@ -6,8 +6,9 @@ const RadioWidgetIIFE = (function () {
 
     function generateRadioWidget(radioWidgetContainerStyle, radioArray, titleText = '') {
         if (radioArray.length > 4) {
-            console.log(ERROR_MESSAGE_RADIO_ELEMENTS_NUMBER_EXCEEDED.StringHelperIIFE.format(numberOfradioArrayToCreate, MAXIMUM_ELEMENTS_NUMBER))
-            return;
+            throw new Error(StringHelperIIFE.format(
+                ERROR_MESSAGE_RADIO_ELEMENTS_NUMBER_EXCEEDED, radioArray.length, MAXIMUM_ELEMENTS_NUMBER
+            ))
         }
 
         let radioWidgetContainer = document.createElement('div');
