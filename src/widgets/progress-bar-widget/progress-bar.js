@@ -52,9 +52,8 @@ class ProgressBar {
 
         stripe.setAttribute('style', `width: ${widthToSet}%`)
         this.progressBarWrapper.append(bar, stripe);
-        let averageTime = Math.floor(this.averageMatchingTime * 100) / 100
-        let formatedTime = StringHelperIIFE.stringToHHMMSS(averageTime);
-        this.label.innerHTML = `<em><span>matches: <strong>${this.matchesCount}</strong> / ${this.itemArray.length}</span>, <span>avg. time: <strong>${averageTime}</em></strong> sec.</span>`
+        let averageTime = StringHelperIIFE.formatTimeWithDynamicUnit(this.averageMatchingTime);
+        this.label.innerHTML = `<em><span>matches: <strong>${this.matchesCount}</strong> / ${this.itemArray.length}</span>, <span>avg. time: <strong>${averageTime}</em></strong></span>`
     }
  
 }

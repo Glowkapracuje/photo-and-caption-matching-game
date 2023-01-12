@@ -1,11 +1,14 @@
 <a name="readme-top"></a>
 # **Photo and caption** matching game
 
+![GitHub package.json version](https://img.shields.io/github/package-json/v/Glowkapracuje/photo-and-caption-matching-game)
+![GitHub repo size](https://img.shields.io/github/repo-size/Glowkapracuje/photo-and-caption-matching-game?color=lightgrey)
+
 **A photo** of an item and several **captions** appear.</br>
 One of the captions is the **correct name of the item**.</br>
 **The speech synthesizer** says the correct name.
 
-Your challenge is to **match the name** (caption) **to the photo**.
+Your challenge is to **match the caption to the photo**.
 
 
 <!-- LIVE DEMO -->
@@ -46,12 +49,17 @@ Based on the latest release:</br>
     - [ ] Provide different item lists
         - [x] Vehicles
         - [ ] Animals
+    - [ ] Allow Tag widget to be updated on list change 
 - [ ] **Improve functionality**
     - [x] Avoid generating random items from the entire list
     - [ ] Create game flow service with improved statuses
 - [ ] **Provide different input types**
     - [x] Captions as buttons
     - [ ] Text input field
+- [ ] **Documentation** 
+    - [x] Helpers 
+        - [x] Array Helper IIFE module
+        - [x] String Helper IIFE module  
 
 
 <!-- TECHNICAL STUFF -->
@@ -64,6 +72,6 @@ Based on the latest release:</br>
 <!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 <p align="center">(<a href="#readme-top">back to top</a>)</p>
