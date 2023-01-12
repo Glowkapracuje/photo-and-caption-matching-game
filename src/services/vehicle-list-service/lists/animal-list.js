@@ -57,6 +57,66 @@ const AnimalListIIFE = (function () {
             },
             category: ANIMAL_CATEGORY.land
         },
+        rhino: {
+            id: 'rhino',
+            name: 'rhino',
+            imageFileName: 'rhino.jpg',
+            caption: {
+                en: 'Rhino',
+                pl: 'Nosorożec'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
+        elephant: {
+            id: 'elephant',
+            name: 'elephant',
+            imageFileName: 'elephant.jpg',
+            caption: {
+                en: 'Elephant',
+                pl: 'Słoń'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
+        lion: {
+            id: 'lion',
+            name: 'lion',
+            imageFileName: 'lion.jpg',
+            caption: {
+                en: 'Lion',
+                pl: 'Lew'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
+        giraffe: {
+            id: 'giraffe',
+            name: 'giraffe',
+            imageFileName: 'giraffe.jpg',
+            caption: {
+                en: 'Giraffe',
+                pl: 'Żyrafa'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
+        tortoise: {
+            id: 'tortoise',
+            name: 'tortoise',
+            imageFileName: 'tortoise.jpg',
+            caption: {
+                en: 'Tortoise',
+                pl: 'Żółw'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
+        grizzlyBear: {
+            id: 'grizzly-bear',
+            name: 'grizzly bear',
+            imageFileName: 'grizzly-bear.jpg',
+            caption: {
+                en: 'Grizzly bear',
+                pl: 'Miś grizzly'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
     }
 
     return {
