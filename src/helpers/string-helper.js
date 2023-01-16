@@ -45,10 +45,10 @@ const StringHelperIIFE = (function () {
      */
     function formatTimeWithDynamicUnit(duration) {
         let time = parseMilisecondsToOtherTimeUnits(duration);
-        
+
         if (time.hours > 0) return `${time.hours}:${padWithTemplate('00', time.minutes, true)} hrs`;
         if (time.minutes > 0) return `${time.minutes}:${padWithTemplate('00', time.seconds, true)} min.`
-        if (time.seconds > 0)return `${time.seconds}.${padWithTemplate('000', time.miliseconds, true)} sec.`
+        if (time.seconds > 0) return `${time.seconds}.${padWithTemplate('000', time.miliseconds, true)} sec.`
         if (time.miliseconds > 0) return `${time.seconds}.${padWithTemplate('000', time.miliseconds, true)} sec.`
         return `0 sec.`;
     }
@@ -61,9 +61,9 @@ const StringHelperIIFE = (function () {
      */
     function formatSecondsToTimeHHMMSS(duration) {
         let time = parseMilisecondsToOtherTimeUnits(duration);
-        let paddedHours = padWithTemplate('00', time.hours.toString(), true);
-        let paddedMinutes = padWithTemplate('00', time.minutes.toString(), true);
-        let paddedSeconds = padWithTemplate('00', time.seconds.toString(), true);
+        let paddedHours = padWithTemplate('00', time.hours, true);
+        let paddedMinutes = padWithTemplate('00', time.minutes, true);
+        let paddedSeconds = padWithTemplate('00', time.seconds, true);
 
         return `${paddedHours}:${paddedMinutes}:${paddedSeconds}`
     }
@@ -72,18 +72,24 @@ const StringHelperIIFE = (function () {
      * Pads the current string with another string until the resulting string reaches the padTemplate length. 
      * The padding is applied from the start of the current string or from the end of it, depending on isPadLeft value.
      * @param {string} padTemplate string that will be used to fill the given padTarget 
-     * @param {string} padTarget string that will be completed using the given pad template
+     * @param {string | number} padTarget target that will be completed using the given pad template
      * @param {boolean} isPadLeft if true pad will fill from the left, if false - from right
      * @returns {string} padded string
      */
     function padWithTemplate(padTemplate, padTarget, isPadLeft) {
-        if (typeof padTarget === 'undefined') {
-            return padTemplate;
-        }
-        let padFromLeft = padTemplate.slice(0, -padTarget.length)
-        let padFromRight = padTemplate.slice(padTarget.length)
+        AssertThat.isNotNullOrUndefined(padTemplate);
+        AssertThat.isNotNullOrUndefined(padTarget);
+        let stringPadTemplate = typeof padTemplate === 'number' ? padTemplate.toString() : padTemplate;
+        let stringPadTarget = typeof padTarget === 'number' ? padTarget.toString() : padTarget;
 
-        return isPadLeft ? padFromLeft + padTarget : padTarget + padFromRight;
+        if (stringPadTarget.length === 0) {
+            return stringPadTemplate;
+        } 
+        
+        let padFromLeft = stringPadTemplate.slice(0, -stringPadTarget.length)
+        let padFromRight = stringPadTemplate.slice(stringPadTarget.length)
+
+        return isPadLeft ? padFromLeft + stringPadTarget : stringPadTarget + padFromRight;
     }
 
     // Returns object that contains parsed units based on the given duration in miliseconds
