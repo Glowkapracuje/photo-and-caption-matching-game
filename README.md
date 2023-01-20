@@ -35,15 +35,12 @@ Based on the latest release:</br>
         - [x] Mixed as temporary solution
         - [ ] Dark 
     - [x] Add input for chosing specific item
-        - [x] Provide widget for creating 'tags' 
     - [x] Place settings on different slides using slider
 - [x] **Allow to change the captions language**
     - [x] Add input for changing the language
     - [x] Display translated captions
     - [x] Provide multiple Speech synthesis voices
 - [x] **Add progress bar**
-    - [x] Display number of correct answers
-    - [x] Measure and display average of matching
 - [ ] **Allow to choose between different item lists**
     - [ ] Provide a widget for creating drop down list 
     - [ ] Provide different item lists
@@ -56,10 +53,27 @@ Based on the latest release:</br>
 - [ ] **Provide different input types**
     - [x] Captions as buttons
     - [ ] Text input field
+- [ ] **Reusable widgets**
+    - [x] Accordion  
+    - [x] Caption
+    - [X] Checkbox
+    - [ ] List
+    - [x] Number spinner
+    - [x] Photo
+    - [x] Progress bar 
+        - [x] Display number of correct answers
+        - [x] Measure and display average of matching
+    - [x] Radio
+    - [x] Slider
+    - [x] Tags 
 - [ ] **Documentation** 
     - [x] Helpers 
         - [x] Array Helper IIFE module
         - [x] String Helper IIFE module  
+- [ ] **Tests** 
+    - [x] Introduce an approach for unit tests without external libraries 
+        - [x] Test runner using browser 
+        - [x] Test result visible on page
 
 
 <!-- TECHNICAL STUFF -->
