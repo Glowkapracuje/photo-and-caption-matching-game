@@ -117,6 +117,46 @@ const AnimalListIIFE = (function () {
             },
             category: ANIMAL_CATEGORY.land
         },
+        cat: {
+            id: 'cat',
+            name: 'cat',
+            imageFileName: 'cat.jpg',
+            caption: {
+                en: 'Cat',
+                pl: 'Kot'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
+        dog: {
+            id: 'dog',
+            name: 'dog',
+            imageFileName: 'dog.jpg',
+            caption: {
+                en: 'Dog',
+                pl: 'Pies'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
+        horse: {
+            id: 'horse',
+            name: 'horse',
+            imageFileName: 'horse.jpg',
+            caption: {
+                en: 'Horse',
+                pl: 'Koń'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
+        cow: {
+            id: 'cow',
+            name: 'cow',
+            imageFileName: 'cow.jpg',
+            caption: {
+                en: 'Cow',
+                pl: 'Krowa'
+            },
+            category: ANIMAL_CATEGORY.land
+        },
     }
 
     return {
