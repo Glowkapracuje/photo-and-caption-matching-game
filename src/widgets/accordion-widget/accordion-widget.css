@@ -6,6 +6,7 @@
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .accordion-widget-container .header-wrapper .title {

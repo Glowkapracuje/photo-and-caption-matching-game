@@ -44,7 +44,7 @@ const StringHelperIIFE = (function () {
      * @returns {string} formatted duration with unit
      */
     function formatTimeWithDynamicUnit(duration) {
-        let time = parseMilisecondsToOtherTimeUnits(duration);
+        let time = _parseMilisecondsToOtherTimeUnits(duration);
 
         if (time.hours > 0) return `${time.hours}:${padWithTemplate('00', time.minutes, true)} hrs`;
         if (time.minutes > 0) return `${time.minutes}:${padWithTemplate('00', time.seconds, true)} min.`
@@ -60,7 +60,7 @@ const StringHelperIIFE = (function () {
      * @returns {string} formatted duration in stopwatch style
      */
     function formatSecondsToTimeHHMMSS(duration) {
-        let time = parseMilisecondsToOtherTimeUnits(duration);
+        let time = _parseMilisecondsToOtherTimeUnits(duration);
         let paddedHours = padWithTemplate('00', time.hours, true);
         let paddedMinutes = padWithTemplate('00', time.minutes, true);
         let paddedSeconds = padWithTemplate('00', time.seconds, true);
@@ -77,8 +77,8 @@ const StringHelperIIFE = (function () {
      * @returns {string} padded string
      */
     function padWithTemplate(padTemplate, padTarget, isPadLeft) {
-        AssertThat.isNotNullOrUndefined(padTemplate);
-        AssertThat.isNotNullOrUndefined(padTarget);
+        AssertThat.notNullOrUndefined(padTemplate);
+        AssertThat.notNullOrUndefined(padTarget);
         let stringPadTemplate = typeof padTemplate === 'number' ? padTemplate.toString() : padTemplate;
         let stringPadTarget = typeof padTarget === 'number' ? padTarget.toString() : padTarget;
 
@@ -93,7 +93,7 @@ const StringHelperIIFE = (function () {
     }
 
     // Returns object that contains parsed units based on the given duration in miliseconds
-    function parseMilisecondsToOtherTimeUnits(duration) {
+    function _parseMilisecondsToOtherTimeUnits(duration) {
         let miliseconds = parseInt(duration % 1000);
         let seconds = parseInt((duration / 1000) % 60);
         let minutes = parseInt((duration / (1000 * 60)) % 60);
