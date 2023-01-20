@@ -1,0 +1,21 @@
+.accordion-widget-container {
+    width: 100%;
+}
+
+.accordion-widget-container .header-wrapper {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
+
+.accordion-widget-container .header-wrapper .title {
+}
+
+.accordion-widget-container .header-wrapper .icon {
+}
+
+.accordion-widget-container .body-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
