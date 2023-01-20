@@ -1,6 +1,6 @@
 {
   "name": "photo-and-caption-matching-game",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Educational game for kids",
   "main": "./src/index.js",
   "scripts": {
