@@ -28,7 +28,7 @@ const AssertThat = (function () {
      */
     function typeIsString(value) {
         const errorMessage = `The type of the: ${value} is not a string.`;
-        _assert(typeof value === 'string', errorMessage);
+        _assert(value.constructor.name === 'String', errorMessage);
     }
 
     /**
@@ -39,27 +39,27 @@ const AssertThat = (function () {
     function notEmptyString(value) {
         const errorMessage = `The given value is an empty string.`
         typeIsString(value);
-        _assert(value.trim() !== '', errorMessage);
+        _assert(value.trim().length !== 0, errorMessage);
     }
 
     /**
-     * Throws an error if given objects are not the same.
-     * @param {Array<number | string>} firstValue 
-     * @param {Array<number | string>} secondValue 
-    */
-    function equals(firstValue, secondValue) {
-        const errorMessage = `The first item with value: ${firstValue} does not equal to the second one with value: ${secondValue}`
+     * Throws an error if given values are not the same.
+     * @param {any} firstValue 
+     * @param {any} secondValue 
+     */
+    function valuesEqual(firstValue, secondValue) {
+        const errorMessage = `The first value: ${firstValue} is not equal to the second one: ${secondValue}`
         _assert(JSON.stringify(firstValue) === JSON.stringify(secondValue), errorMessage);
     }
 
     /**
-    * Throws an error if given values are the same.
-    * @param {any} firstValue 
-    * @param {any} secondValue 
-    */
-    function notEquals(firstValue, secondValue) {
-        const errorMessage = `The first value: ${firstValue} does not equal to the second one: ${secondValue}`
-        _assert(firstValue !== secondValue, errorMessage);
+     * Throws an error if given values are the same.
+     * @param {any} firstValue 
+     * @param {any} secondValue 
+     */
+    function valuesNotEqual(firstValue, secondValue) {
+        const errorMessage = `The first value: ${firstValue} is equal to the second one: ${secondValue}, but is shouldn't.`
+        _assert(JSON.stringify(firstValue) !== JSON.stringify(secondValue), errorMessage);
     }
 
     /**
@@ -78,8 +78,8 @@ const AssertThat = (function () {
         nullOrUndefined: nullOrUndefined,
         typeIsString: typeIsString,
         notEmptyString: notEmptyString,
-        equals: equals,
-        notEquals: notEquals,
+        valuesEqual: valuesEqual,
+        valuesNotEqual: valuesNotEqual,
     }
 
 })();

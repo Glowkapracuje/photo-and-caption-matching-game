@@ -70,6 +70,10 @@ Based on the latest release:</br>
     - [x] Helpers 
         - [x] Array Helper IIFE module
         - [x] String Helper IIFE module  
+- [ ] **Tests** 
+    - [x] Introduce an approach for unit tests without external libraries 
+        - [x] Test runner using browser 
+        - [x] Test result visible on page
 
 
 <!-- TECHNICAL STUFF -->

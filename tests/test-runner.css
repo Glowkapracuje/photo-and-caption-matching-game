@@ -1,0 +1,160 @@
+:root {
+    --badge-grey--light: rgb(230 230 230);
+    --badge-grey--dark: rgb(80 80 80);
+    --badge-green--light: rgb(200, 255, 220);
+    --badge-green--dark: rgb(0, 160, 60);
+    --badge-blue--light: rgb(200, 220, 255);
+    --badge-blue--dark: rgb(0, 60, 160);
+    --badge-red--light: rgb(255 200 200);
+    --badge-red--dark: rgb(160, 0, 0);
+    --badge-yellow--light: rgb(255 240 160);
+    --badge-yellow--dark: rgb(200 140 0);
+}
+
+.tests-result-container {
+    font-family: monospace, monospace;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.tests-result-container table {
+    font-size: small;
+    width: 100%;
+}
+
+.tests-result-container table tr {
+    padding: 0.25rem;
+    border-top: 1px solid var(--badge-grey--light);
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+}
+
+.tests-result-container table tr:last-child {
+    border-bottom: 1px solid var(--badge-grey--light);
+}
+
+.tests-statistics-container {
+    display: flex;
+    flex-direction: column;
+    color: var(--badge-yellow--dark);
+    background-color: var(--badge-yellow--light);
+    flex-shrink: 0;
+}
+
+.tests-statistics-container span {
+    display: flex;
+    padding: 25px 12px 0 12px;
+    flex-direction: column-reverse;
+    gap: 4px;
+    font-size: x-large;
+    height: 47px;
+    justify-content: center;
+}
+
+.tests-result-container table tbody {
+    display: flex;
+    flex-direction: column;
+}
+
+.test-passed {
+    color: var(--badge-green--dark);
+}
+
+.test-passed:hover {
+    background-color: var(--badge-green--light);
+    border-top: 1px solid var(--badge-green--light);
+}
+
+.test-failed {
+    color: var(--badge-red--dark);
+}
+
+.test-failed:hover {
+    background-color: var(--badge-red--light);
+    border-top: 1px solid var(--badge-red--light);
+}
+
+.test-expected-error {
+    color: var(--badge-blue--dark);
+}
+
+.test-expected-error:hover {
+    background-color: var(--badge-blue--light);
+    border-top: 1px solid var(--badge-blue--light);
+}
+
+.status-pill--status-passed::before {
+    background-color: var(--badge-green--light);
+    color: var(--badge-green--dark);
+    content: '✓ PASSED';
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-size: x-small;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.status-pill--status-passed:hover::before {
+    background-color: var(--badge-green--dark);
+    color: white;
+}
+
+.status-pill--status-failed::before {
+    background-color: var(--badge-red--light);
+    color: var(--badge-red--dark);
+    content: '✕ FAILED';
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-size: x-small;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.status-pill--status-failed:hover::before {
+    background-color: var(--badge-red--dark);
+    color: white;
+}
+
+.status-pill--status-expected-error::before {
+    background-color: var(--badge-blue--light);
+    color: var(--badge-blue--dark);
+    content: '✓ EXPECTED ERROR';
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-size: x-small;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.status-pill--status-expected-error:hover::before {
+    background-color: var(--badge-blue--dark);
+    color: white;
+}
+
+.status-pill--status-overall-test-number::before {
+    background-color: var(--badge-yellow--light);
+    color: var(--badge-yellow--dark);
+    content: '🧪 OVERALL';
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+    text-transform: uppercase;
+    font-size: x-small;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.status-pill--status-overall-test-number:hover::before {
+    background-color: var(--badge-yellow--dark);
+    color: white;
+}
+
+/* Custom style for Accordion widget */
+.accordion-widget-container .header-wrapper .icon {
+    margin-right: 0.25rem;
+    font-size: x-small;
+}
