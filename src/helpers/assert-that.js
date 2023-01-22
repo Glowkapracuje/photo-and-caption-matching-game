@@ -48,7 +48,7 @@ const AssertThat = (function () {
      * @param {any} secondValue 
      */
     function valuesEqual(firstValue, secondValue) {
-        const errorMessage = `The first value: ${firstValue} is not equal to the second one: ${secondValue}`
+        const errorMessage = `The first value: ${firstValue} is not equal to the second one: ${secondValue}.`
         _assert(JSON.stringify(firstValue) === JSON.stringify(secondValue), errorMessage);
     }
 
@@ -58,7 +58,7 @@ const AssertThat = (function () {
      * @param {any} secondValue 
      */
     function valuesNotEqual(firstValue, secondValue) {
-        const errorMessage = `The first value: ${firstValue} is equal to the second one: ${secondValue}, but is shouldn't.`
+        const errorMessage = `The first value: ${firstValue} is equal to the second one: ${secondValue}.`
         _assert(JSON.stringify(firstValue) !== JSON.stringify(secondValue), errorMessage);
     }
 
@@ -69,7 +69,7 @@ const AssertThat = (function () {
      */
     function _assert(condition, message) {
         if (!condition) {
-            throw new Error(message || "Assertion failed");
+            throw new Error(message || "Assertion failed.");
         }
     }
 

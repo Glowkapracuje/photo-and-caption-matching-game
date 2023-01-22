@@ -1,6 +1,6 @@
 const AccordionWidgetIIFE = (function () {
-    let defaultIconExpandedText = '🡱';
-    let defaultIconShortenedText = '🡳';
+    let defaultIconExpandedText = '↑';
+    let defaultIconShortenedText = '↓';
 
     /**
      * Generates an element that appears as an expandable accordion
@@ -41,10 +41,10 @@ const AccordionWidgetIIFE = (function () {
         headerWrapper.addEventListener('click', function () {
             if (bodyWrapper.style.maxHeight) {
                 bodyWrapper.style.maxHeight = null;
-                icon.innerText = iconShortenedText;
+                icon.textContent  = iconShortenedText;
             } else {
                 bodyWrapper.style.maxHeight = bodyWrapper.scrollHeight + "px";
-                icon.innerText = iconExpandedText;
+                icon.textContent = iconExpandedText;
             }
         })
 
