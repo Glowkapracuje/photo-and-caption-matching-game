@@ -1,3 +1,6 @@
+/**
+ * This is an IIFE module whose task is to declare and make public the basic test method and initialize the empty test collection.
+ */
 (function () {
 
     // Global collection of tests

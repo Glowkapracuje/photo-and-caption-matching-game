@@ -83,39 +83,27 @@
     });
 
     test(moduleName, 'padWithTemplate', 'should throw error when padTemplate is null', true, () => {
-        // given
-        let expectedWrongResult = '100'
-
-        // when
+        // given, when & then
         let paddedString = StringHelperIIFE.padWithTemplate(null, '1', false);
     });
 
     test(moduleName, 'padWithTemplate', 'should throw error when padTemplate is undefined', true, () => {
-        // given
-        let expectedWrongResult = '100'
-
-        // when
+        // given, when & then
         let paddedString = StringHelperIIFE.padWithTemplate(undefined, '1', false);
     });
 
     test(moduleName, 'padWithTemplate', 'should throw error when padTarget is null', true, () => {
-        // given
-        let expectedWrongResult = '100'
-
-        // when
+        // given, when & then
         let paddedString = StringHelperIIFE.padWithTemplate('000', null, false);
     });
 
     test(moduleName, 'padWithTemplate', 'should throw error when padTarget is undefined', true, () => {
-        // given
-        let expectedWrongResult = '100'
-
-        // when
+        // given, when & then
         let paddedString = StringHelperIIFE.padWithTemplate('000', undefined, false);
     });
 
     test(moduleName, 'padWithTemplate', 'example failing test for presentation purposes only', false, () => {
-        StringHelperIIFE.padWithTemplate('000', undefined, false);
+        AssertThat.padWithTemplate('000', undefined, false);
     });
 
 })();
