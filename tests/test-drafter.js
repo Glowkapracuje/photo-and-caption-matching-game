@@ -21,5 +21,5 @@
     // Exposing for a global scope the test method and the collection of tests
     window.test = test;
     window.tests = tests;
-    
+
 })();

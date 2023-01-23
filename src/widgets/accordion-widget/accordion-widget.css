@@ -9,14 +9,22 @@
     align-items: center;
 }
 
-.accordion-widget-container .header-wrapper .title {
+.accordion-widget-container .header-wrapper .title {}
+
+.accordion-widget-container .header-wrapper .title:hover {
+    text-decoration: underline;
 }
 
-.accordion-widget-container .header-wrapper .icon {
-}
+.accordion-widget-container .header-wrapper .icon {}
 
 .accordion-widget-container .body-wrapper {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
+}
+
+@media only screen and (max-width: 600px) {
+    .accordion-widget-container .header-wrapper {
+        align-items: flex-start;
+    }
 }

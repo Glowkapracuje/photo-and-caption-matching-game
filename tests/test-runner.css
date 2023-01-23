@@ -5,25 +5,20 @@
     gap: 0.5rem;
 }
 
-@media only screen and (max-width: 600px) {
-    .tests-result-container {
-        flex-direction: column-reverse;
-        gap: 0;
-    }
-}
-
 .tests-result-container table {
     font-size: small;
-    width: 100%;
     border-collapse: collapse;
+    word-break: break-word;
+    table-layout: fixed;
+    width: 100%;
 }
 
 .tests-result-container table tr {
     padding: 0.25rem;
     border-top: 1px solid var(--badge-grey--light);
     display: flex;
-    align-items: baseline;
     gap: 0.5rem;
+    align-items: baseline;
 }
 
 .tests-result-container table tr:last-child {
@@ -53,7 +48,68 @@
     gap: 26px;
 }
 
-@media only screen and (max-width: 600px) {
+.tests-statistics-container .number-and-badge-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: center;
+}
+
+.tests-result-container table tbody {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-style-test-passed {
+    color: var(--badge-green--dark);
+}
+
+.row-style-test-passed:hover {
+    background-color: var(--badge-green--light);
+    border-color: var(--badge-green--light);
+}
+
+.row-style-test-failed {
+    color: var(--badge-red--dark);
+}
+
+.row-style-test-failed:hover {
+    background-color: var(--badge-red--light);
+    border-color: var(--badge-red--light);
+}
+
+.row-style-test-expected-error {
+    color: var(--badge-blue--dark);
+}
+
+.row-style-test-expected-error:hover {
+    background-color: var(--badge-blue--light);
+    border-color: var(--badge-blue--light);
+}
+
+/* Custom style for Accordion widget */
+.accordion-widget-container .header-wrapper .icon {
+    margin-right: 0.25rem;
+}
+
+@media only screen and (max-width: 1200px) {
+    .tests-result-container {
+        flex-direction: column-reverse;
+        gap: 0;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .tests-result-container table tr {
+        flex-wrap: wrap;
+    }
+
+    .tests-result-container table tr:first-child {
+        border: none;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
     .tests-statistics-container {
         flex-direction: row;
         justify-content: space-around;
@@ -64,18 +120,21 @@
         top: 0;
         align-self: stretch;
         position: sticky;
-        top: 0;
+        top: 8px;
+        margin-bottom: 5px;
+    }
+
+    .tests-statistics-container::before {
+        content: '';
+        width: 100%;
+        height: 8px;
+        background-color: var(--color-white);
+        position: absolute;
+        top: -8px;
     }
 }
 
-.tests-statistics-container .number-and-badge-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    text-align: center;
-}
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1200px) {
     .tests-statistics-container .number-and-badge-wrapper {
         display: flex;
         flex-direction: row;
@@ -85,39 +144,16 @@
     }
 }
 
-.tests-result-container table tbody {
-    display: flex;
-    flex-direction: column;
+@media only screen and (max-width: 600px) {
+    .tests-statistics-container {
+        position: static;
+    }
 }
 
-.test-passed {
-    color: var(--badge-green--dark);
-}
-
-.test-passed:hover {
-    background-color: var(--badge-green--light);
-    border-color: var(--badge-green--light);
-}
-
-.test-failed {
-    color: var(--badge-red--dark);
-}
-
-.test-failed:hover {
-    background-color: var(--badge-red--light);
-    border-color: var(--badge-red--light);
-}
-
-.test-expected-error {
-    color: var(--badge-blue--dark);
-}
-
-.test-expected-error:hover {
-    background-color: var(--badge-blue--light);
-    border-color: var(--badge-blue--light);
-}
-
-/* Custom style for Accordion widget */
-.accordion-widget-container .header-wrapper .icon {
-    margin-right: 0.25rem;
+@media only screen and (max-width: 600px) {
+    .accordion-widget-container .header-wrapper .icon {
+        margin-left: 0.5rem;
+        margin-right: 0.25rem;
+        font-size: large;
+    }
 }

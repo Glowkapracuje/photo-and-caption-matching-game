@@ -12,16 +12,17 @@ Your challenge is to **match the caption to the photo**.
 
 
 <!-- LIVE DEMO -->
-## Live demo 
-Based on the latest release:</br>
+## Live demo
+Currently best to run on Chrome:</br>
 ***https://glowkapracuje.github.io/photo-and-caption-matching-game/***
 
 [<img src="./src/resources/images/demo-screens/01-main-demo-image.jpg" width="100%"/>](./src/resources/images/demo-screens/01-main-demo-image.jpg)
 
-Running unit tests in a browser and displaying results:</br>
+Running unit tests in a browser.</br>
+Everything has been written from scratch, the project does not use any external library:<br>
 ***https://glowkapracuje.github.io/photo-and-caption-matching-game/tests/test-runner.html***
 
-[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="100%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
+[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="50%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
 
 <!-- ROADMAP -->
 ## Roadmap
@@ -70,10 +71,13 @@ Running unit tests in a browser and displaying results:</br>
     - [x] Radio
     - [x] Slider
     - [x] Tags 
+- [ ] **Provide support for browsers other than chrome**
 - [ ] **Documentation** 
     - [x] Helpers 
         - [x] Array Helper IIFE module
         - [x] String Helper IIFE module  
+        - [x] Assert That Helper IIFE module
+    - [ ] Services 
 - [x] **Tests** 
     - [x] Introduce an approach for unit tests without external libraries 
         - [x] Test runner using browser 
