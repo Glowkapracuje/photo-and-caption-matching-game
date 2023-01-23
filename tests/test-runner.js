@@ -5,12 +5,6 @@
         createStatistics()
     });
 
-    const checkMarkUniCode = '\u2714';
-    const ballotXUniCode = '\u2718';
-    const darkGreenColor = 'rgb(0, 160, 60)';
-    const darkRedColor = 'rgb(160, 0, 0)';
-    const darkBlueColor = 'rgb(10, 60, 160)';
-
     let statusCounter = {
         passed: 0,
         failed: 0,
@@ -44,24 +38,14 @@
         tests.forEach(test => {
             try {
                 test.testFunctionCallBack()
-                console.log(
-                    `%c${checkMarkUniCode} ${test.testedModuleName}: ${test.testedFunctionName} ${test.testDescription}`, `color: ${darkGreenColor}`
-                );
                 createTableResultRow(test, TEST_STATUS.passed);
                 statusCounter.passed++;
             } catch (error) {
                 if (test.isErrorExpected) {
-                    console.log(
-                        `%c${checkMarkUniCode} ${test.testedModuleName}: ${test.testedFunctionName} ${test.testDescription}`, `color: ${darkBlueColor}`
-                    );
-                    createTableResultRow(test, TEST_STATUS.expectedError)
+                    createTableResultRow(test, TEST_STATUS.expectedError, error.stack)
                     statusCounter.passed++;
                     statusCounter.errorExpected++;
                 } else {
-                    console.log(
-                        `%c${ballotXUniCode} ${test.testedModuleName}: ${test.testedFunctionName} ${test.testDescription}`, `color: ${darkRedColor}`
-                    );
-                    console.log(error.stack)
                     createTableResultRow(test, TEST_STATUS.failed, error.stack)
                     statusCounter.failed++;
                 }

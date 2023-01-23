@@ -102,8 +102,4 @@
         let paddedString = StringHelperIIFE.padWithTemplate('000', undefined, false);
     });
 
-    test(moduleName, 'padWithTemplate', 'example failing test for presentation purposes only', false, () => {
-        AssertThat.padWithTemplate('000', undefined, false);
-    });
-
 })();

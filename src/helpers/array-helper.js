@@ -89,7 +89,7 @@ const ArrayHelperIIFE = (function () {
         if (numberOfItemsToReturn !== null && numberOfItemsToReturn !== undefined && typeof numberOfItemsToReturn === 'number') {
             maxArraySize = allItems.length - numberOfItemsToReturn;
         } else {
-            maxArraySize = allItems.length;
+            maxArraySize = 0;
         }
         //  Push to result array unique random items
         while (allItems.length > maxArraySize) {
@@ -146,6 +146,7 @@ const ArrayHelperIIFE = (function () {
         sortNumbersAscending: sortNumbersAscending,
         sortNumbersDescending: sortNumbersDescending,
         getUniqueItems: getUniqueItems,
+        getUniqueItemsByNewSet: getUniqueItemsByNewSet,
         getDifferencesBetweenTwoArrays: getDifferencesBetweenTwoArrays,
         getRandomItemsFromArray: getRandomItemsFromArray,
         getArrayWithRequiredItemAndOtherRandoms: getArrayWithRequiredItemAndOtherRandoms,

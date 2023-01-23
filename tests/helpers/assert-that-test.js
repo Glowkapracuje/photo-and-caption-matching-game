@@ -7,10 +7,11 @@
     const STRING_OBJECT_WRAPPED = String('string object wrapped');
     const EMPTY_STRING = '';
     const NOT_EMPTY_STRING = 'not empty string';
-    const FIRST_SIMPLE_NUMBER_ARRAY = [1,2,3]
-    const SECOND_SIMPLE_NUMBER_ARRAY = [1,2,3]
-    const FIRST_OBJECT_ARRAY = [{a:1, b:2}]
-    const SECOND_OBJECT_ARRAY = [{a:1, b:2}]
+    const FIRST_SIMPLE_NUMBER_ARRAY = [1, 2, 3]
+    const SECOND_SIMPLE_NUMBER_ARRAY = [1, 2, 3]
+    const FIRST_OBJECT_ARRAY = [{ a: 1, b: 2 }]
+    const SECOND_OBJECT_ARRAY = [{ a: 1, b: 2 }]
+    const EXAMPLE_LETTER_ARRAY = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
 
     test(moduleName, 'notNullOrUndefined', 'should throw an error if the provided value is null or undefined', true, () => {
         // given, when & then
@@ -61,7 +62,7 @@
         // given, when & then
         AssertThat.valuesEqual(EMPTY_STRING, NOT_EMPTY_STRING);
     });
-    
+
     test(moduleName, 'valuesEqual', 'should not throw an error if the provided values are the same', false, () => {
         // given, when & then
         AssertThat.valuesEqual(FIRST_SIMPLE_NUMBER_ARRAY, SECOND_SIMPLE_NUMBER_ARRAY);
@@ -72,6 +73,16 @@
         // given, when & then
         AssertThat.valuesNotEqual(FIRST_SIMPLE_NUMBER_ARRAY, SECOND_SIMPLE_NUMBER_ARRAY);
         AssertThat.valuesNotEqual(FIRST_OBJECT_ARRAY, SECOND_OBJECT_ARRAY);
+    });
+
+    test(moduleName, 'contains', 'should throw an error if the array does not contain the given value', true, () => {
+        // given, when & then
+        AssertThat.contains(EXAMPLE_LETTER_ARRAY, 5);
+    });
+
+    test(moduleName, 'contains', 'should not throw an error when the array contains the given value', false, () => {
+        // given, when & then
+        AssertThat.contains(EXAMPLE_LETTER_ARRAY, EXAMPLE_LETTER_ARRAY[0]);
     });
 
 })();
