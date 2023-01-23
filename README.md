@@ -18,6 +18,10 @@ Based on the latest release:</br>
 
 [<img src="./src/resources/images/demo-screens/01-main-demo-image.jpg" width="100%"/>](./src/resources/images/demo-screens/01-main-demo-image.jpg)
 
+Running unit tests in a browser and displaying results:</br>
+***https://glowkapracuje.github.io/photo-and-caption-matching-game/tests/test-runner.html***
+
+[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="100%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
 
 <!-- ROADMAP -->
 ## Roadmap

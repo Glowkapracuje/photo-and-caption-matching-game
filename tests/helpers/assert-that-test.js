@@ -58,6 +58,64 @@
         AssertThat.notEmptyString(NOT_EMPTY_STRING);
     });
 
+    test(moduleName, 'valuesEqual', 'should throw an error if the provided object arrays are not the same', true, () => {
+        // given
+        let firstSimpleObject =
+            [
+                {
+                    vehicle: {
+                        name: 'monster-truck',
+                    },
+                    animal: {
+                        name: 'elephant',
+                    }
+                }
+            ];
+
+        let secondSimpleObject =
+            [
+                {
+                    vehicle: {
+                        name: 'snowplow',
+                    },
+                    animal: {
+                        name: 'shark',
+                    }
+                }
+            ];
+        // when & then
+        AssertThat.valuesEqual(firstSimpleObject, secondSimpleObject);
+    });
+
+    test(moduleName, 'valuesEqual', 'should not throw an error if the provided object arrays are the same', false, () => {
+        // given
+        let firstSimpleObject =
+            [
+                {
+                    vehicle: {
+                        name: 'monster-truck',
+                    },
+                    animal: {
+                        name: 'elephant',
+                    }
+                }
+            ];
+
+        let secondSimpleObject =
+            [
+                {
+                    vehicle: {
+                        name: 'monster-truck',
+                    },
+                    animal: {
+                        name: 'elephant',
+                    }
+                }
+            ];
+        // when & then
+        AssertThat.valuesEqual(firstSimpleObject, secondSimpleObject);
+    });
+
     test(moduleName, 'valuesEqual', 'should throw an error if the provided values are not the same', true, () => {
         // given, when & then
         AssertThat.valuesEqual(EMPTY_STRING, NOT_EMPTY_STRING);
