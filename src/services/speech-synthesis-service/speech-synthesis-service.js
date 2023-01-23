@@ -1,5 +1,5 @@
 const SpeechSynthesisServiceIIFE = (function () {
-    
+
     const DEFAULT_VOICE_LANG = "en-US"
     const DEFAULT_VOICE_RATE = 0.65;
     const DEFAULT_VOICE_PITCH = 1;
@@ -15,17 +15,17 @@ const SpeechSynthesisServiceIIFE = (function () {
     let voices = [];
 
     // if voices available (mozilla, brave)
-       // look for preferenced  
-         // if no preferenced take default (optional and disable change possibility)
-         // if no default take first
+    // look for preferenced  
+    // if no preferenced take default (optional and disable change possibility)
+    // if no default take first
     // if no available (chrome) put event listener onvoiceschange with:
     // - looking for preferenced voice
-        // - looking for default
-        // - taking first 
+    // - looking for default
+    // - taking first 
 
     loadVoices();
-    
-    function loadVoices () {
+
+    function loadVoices() {
         voices = SPEECH_SYNTHESIS.getVoices();
 
         if (!voices.length) {
@@ -35,7 +35,7 @@ const SpeechSynthesisServiceIIFE = (function () {
             selectVoice()
             setDefaultSpeechUterranceSettings();
         }
-    }    
+    }
 
     function selectVoice() {
         let preferredVoices = [];
@@ -82,26 +82,16 @@ const SpeechSynthesisServiceIIFE = (function () {
 
     // Returns default application preferred voice or the first available 
     function getDefaultVoiceOnStart() {
-        let preferrencedDefaultVoice = getVoice(DEFAULT_VOICE_NAME);
+        let preferrencedDefaultVoice = _getVoice(DEFAULT_VOICE_NAME);
         if (!preferrencedDefaultVoice) {
             preferrencedDefaultVoice = voices[0]
         }
         return preferrencedDefaultVoice;
     }
 
-    // Gets the voice from list by voice name
-    function getVoice(voiceName) {
-        return voices.filter(voice => voice.name === voiceName)[0];
-    };
-
-    // The simplest invoking method on speech synthesis
-    function speak() {
-        SPEECH_SYNTHESIS.speak(SPEECH_UTTERANCE);
-    }
-
     // Switches language to polish or the only available
     function switchVoiceToPolish() {
-        let polishVoice = getVoice(AVAILABLE_VOICES_NAMES.pl.name);
+        let polishVoice = _getVoice(AVAILABLE_VOICES_NAMES.pl.name);
         if (!polishVoice) {
             polishVoice = voices[0];
         }
@@ -112,7 +102,7 @@ const SpeechSynthesisServiceIIFE = (function () {
 
     // Switches language to english or the only available
     function switchVoiceToEnglish() {
-        let englishVoice = getVoice(AVAILABLE_VOICES_NAMES.en.name);
+        let englishVoice = _getVoice(AVAILABLE_VOICES_NAMES.en.name);
         if (!englishVoice) {
             englishVoice = voices[0];
         }
@@ -121,23 +111,33 @@ const SpeechSynthesisServiceIIFE = (function () {
         SPEECH_UTTERANCE.volume = 1;
     }
 
+    /** Runs Speech Synthesis and read the given text.
+     *  If an utterance is currently being read, it is canceled to start a new one.
+     *  @param {string} text 
+     */
+    function speakNow(text) {
+        SPEECH_UTTERANCE.text = text;
+        if (SPEECH_SYNTHESIS.speaking) {
+            SPEECH_SYNTHESIS.cancel();
+        }
+        _speak();
+    }
+
+    // The simplest invoking method on speech synthesis
+    function _speak() {
+        SPEECH_SYNTHESIS.speak(SPEECH_UTTERANCE);
+    }
+
+    // Gets the voice from list by voice name
+    function _getVoice(voiceName) {
+        return voices.filter(voice => voice.name === voiceName)[0];
+    };
+
     return {
         voices: AVAILABLE_VOICES_NAMES,
-        /**
-         * Runs Speech Synthesis and read the given text
-         * @param {string} text 
-         */
-        speakNow: function (text) {
-            SPEECH_UTTERANCE.text = text;
-             if (SPEECH_SYNTHESIS.speaking) {
-                SPEECH_SYNTHESIS.cancel();
-            }
-            speak();
-        },
-
-        switchVoiceToPolish: function() { return switchVoiceToPolish(); },
-
-        switchVoiceToEnglish: function() { return switchVoiceToEnglish(); }
+        speakNow: speakNow,
+        switchVoiceToPolish: switchVoiceToPolish,
+        switchVoiceToEnglish: switchVoiceToEnglish
     };
 
 })();

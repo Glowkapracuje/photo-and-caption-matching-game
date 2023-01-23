@@ -526,7 +526,7 @@ const VehicleListServiceIIFE = (function () {
             },
             category: VEHICLE_CATEGORY.car
         },
-    
+
     }
 
     const VEHICLE_LIST_SORT_TYPE = Object.freeze({
@@ -551,9 +551,9 @@ const VehicleListServiceIIFE = (function () {
     }
 
     return {
-        sortListAlphabetically: function () { sortListAlphabetically() },
-        sortListByCategory: function () { sortListByCategory() },
-        sortListRandomly: function () { sortListRandomly() },
+        sortListAlphabetically: sortListAlphabetically,
+        sortListByCategory: sortListByCategory,
+        sortListRandomly: sortListRandomly,
 
         vehicles: VEHICLES,
         sortType: VEHICLE_LIST_SORT_TYPE,

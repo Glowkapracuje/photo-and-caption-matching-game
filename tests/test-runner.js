@@ -65,7 +65,7 @@
             statusBadgePassed.setAttribute('class', 'status-badge status-badge--success');
             statusBadgePassed.innerText = '✓ PASSED';
             tableRow.appendChild(statusBadgePassed);
-            tableRow.setAttribute('class', 'test-passed');
+            tableRow.setAttribute('class', 'row-style-test-passed');
         }
         else if (testStatus === TEST_STATUS.expectedError) {
             let statusBadgePassed = document.createElement('span');
@@ -73,21 +73,21 @@
             statusBadgePassed.setAttribute('class', 'status-badge status-badge--success');
             statusBadgePassed.innerText = '✓ PASSED';
             statusBadgeExpectedError.setAttribute('class', 'status-badge status-badge--info');
-            statusBadgeExpectedError.innerText = 'ERROR EXPECTED';
+            statusBadgeExpectedError.innerText = '✓ ERROR EXPECTED';
             tableRow.append(statusBadgePassed, statusBadgeExpectedError);
-            tableRow.setAttribute('class', 'test-expected-error');
+            tableRow.setAttribute('class', 'row-style-test-expected-error');
         }
         else if (testStatus === TEST_STATUS.failed) {
             let statusBadgeFailed = document.createElement('span');
             statusBadgeFailed.setAttribute('class', 'status-badge status-badge--fail');
             statusBadgeFailed.innerText = '✕ FAILED';
             tableRow.appendChild(statusBadgeFailed);
-            tableRow.setAttribute('class', 'test-failed');
+            tableRow.setAttribute('class', 'row-style-test-failed');
         }
 
         let testResultMessage = document.createElement('span');
         testResultMessage.innerHTML =
-            `${testedModuleName}: <em><strong>${testedFunctionName}</strong></em> ${testDescription}`;
+            `${testedModuleName}: <em><strong>${testedFunctionName}</strong></em> ${testDescription}.`;
 
         if (stackTrace) {
             let properties = {
@@ -127,10 +127,10 @@
         statusBadgeFailed.setAttribute('class', 'status-badge status-badge--fail');
         statusBadgeOverallCount.setAttribute('class', 'status-badge status-badge--warning');
 
-        statusBadgePassed.innerText = '✓ PASSED'
-        statusBadgeExpectedError.innerText = '✓ ERROR EXPECTED'
-        statusBadgeFailed.innerText = '✕ FAILED'
-        statusBadgeOverallCount.innerText = '🧪 OVERALL'
+        statusBadgePassed.innerText = '✓ PASSED';
+        statusBadgeExpectedError.innerText = '✓ ERROR EXPECTED';
+        statusBadgeFailed.innerText = '✕ FAILED';
+        statusBadgeOverallCount.innerText = '🧪 OVERALL';
 
         let passedTestsWrapper = document.createElement('div');
         let expectedErrorsWrapper = document.createElement('div');

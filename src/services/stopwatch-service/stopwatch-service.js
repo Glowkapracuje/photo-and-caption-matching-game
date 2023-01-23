@@ -49,15 +49,9 @@ const StopwatcServiceIIFE = (function () {
     }
 
     return {
-        start: function () {
-            return start()
-        },
-        stop: function () {
-            return stop()
-        },
-        reset: function () {
-            return reset()
-        },
+        start: start,
+        stop: stop,
+        reset: reset,
         currentDuration: function () {
             return currentDuration;
         },
