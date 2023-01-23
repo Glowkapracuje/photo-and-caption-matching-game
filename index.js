@@ -30,7 +30,7 @@ const CHECK_MARKS = {
     questionMark: '?'
 }
 
-const SOUNDS_PATH = './resources/sounds/';
+const SOUNDS_PATH = './src/resources/sounds/';
 const SOUNDS = {
     correctAnswer: {
         filename: 'correct-answer.mp3',
@@ -405,7 +405,7 @@ function generateOrUpdateProgressBar() {
 }
 
 function generateOrUpdateVehiclePhoto() {
-    const photosUrl = './resources/images/';
+    const photosUrl = './src/resources/images/';
 
     let photoWidgetProperties = {
         customWidgetWrapperStyle: '',
