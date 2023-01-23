@@ -75,6 +75,7 @@ Based on the latest release:</br>
         - [x] Test runner using browser 
         - [x] Test result visible on page
             - [x] Mobile view 
+            - [x] Display error stack trace (for failed and expected error results) 
         - [x] Separate dev code and app code 
 
 
