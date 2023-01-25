@@ -61,26 +61,19 @@
         const tableRow = document.createElement('tr');
 
         if (testStatus === TEST_STATUS.passed) {
-            let statusBadgePassed = document.createElement('span');
-            statusBadgePassed.setAttribute('class', 'status-badge status-badge--success');
-            statusBadgePassed.innerText = '✓ PASSED';
+            let statusBadgePassed = _createStatusBadgePassed();
             tableRow.appendChild(statusBadgePassed);
             tableRow.setAttribute('class', 'row-style-test-passed');
         }
         else if (testStatus === TEST_STATUS.expectedError) {
-            let statusBadgePassed = document.createElement('span');
-            let statusBadgeExpectedError = document.createElement('span');
-            statusBadgePassed.setAttribute('class', 'status-badge status-badge--success');
-            statusBadgePassed.innerText = '✓ PASSED';
-            statusBadgeExpectedError.setAttribute('class', 'status-badge status-badge--info');
-            statusBadgeExpectedError.innerText = '✓ ERROR EXPECTED';
-            tableRow.append(statusBadgePassed, statusBadgeExpectedError);
+            let statusBadgePassed = _createStatusBadgePassed();
+            let statusBadgeExpectedError = _createStatusBadgeErrorExpected()
             tableRow.setAttribute('class', 'row-style-test-expected-error');
+
+            tableRow.append(statusBadgePassed, statusBadgeExpectedError);
         }
         else if (testStatus === TEST_STATUS.failed) {
-            let statusBadgeFailed = document.createElement('span');
-            statusBadgeFailed.setAttribute('class', 'status-badge status-badge--fail');
-            statusBadgeFailed.innerText = '✕ FAILED';
+            let statusBadgeFailed = _createStatusBadgeFailed();
             tableRow.appendChild(statusBadgeFailed);
             tableRow.setAttribute('class', 'row-style-test-failed');
         }
@@ -104,6 +97,49 @@
         }
 
         resultTableBody.appendChild(tableRow);
+    }
+
+    function _createStatusBadgePassed() {
+        let statusBadgePassed = document.createElement('span');
+        statusBadgePassed.setAttribute('class', 'status-badge status-badge--success');
+        statusBadgePassed.innerText = '✓ PASSED';
+
+        let tooltipProperties = {
+            titleText: 'Test status: Passed',
+            bodyText: 'This test has been performed successfully.',
+            iconText: ''
+        }
+        TooltipWidget.generateTooltipWidget(tooltipProperties, statusBadgePassed);
+        return statusBadgePassed;
+    }
+
+    function _createStatusBadgeErrorExpected() {
+        let statusBadgeErrorExpected = document.createElement('span');
+        statusBadgeErrorExpected.setAttribute('class', 'status-badge status-badge--info');
+        statusBadgeErrorExpected.innerText = '✓ ERROR EXPECTED';
+
+        let tooltipProperties = {
+            titleText: 'Test status: Passed',
+            bodyText: 'As expected, the tested method has thrown an error.',
+            iconText: ''
+        }
+        TooltipWidget.generateTooltipWidget(tooltipProperties, statusBadgeErrorExpected);
+        return statusBadgeErrorExpected;
+    }
+
+    
+    function _createStatusBadgeFailed() {
+        let statusBadgeFailed = document.createElement('span');
+        statusBadgeFailed.setAttribute('class', 'status-badge status-badge--fail');
+        statusBadgeFailed.innerText = '✕ FAILED';
+
+        let tooltipProperties = {
+            titleText: 'Test status: Failed',
+            bodyText: 'The tested method has thrown an unexpected error.',
+            iconText: '!'
+        }
+        TooltipWidget.generateTooltipWidget(tooltipProperties, statusBadgeFailed);
+        return statusBadgeFailed;
     }
 
     function createStatistics() {
