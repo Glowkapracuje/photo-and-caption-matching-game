@@ -1,0 +1,62 @@
+.tooltip-trigger {
+    position: relative;
+    cursor: pointer;
+}
+
+.tooltip-trigger:hover .tooltip-widget-container {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-widget-container {
+    display: flex;
+    flex-direction: row-reverse;
+    background-color: var(--font-color--dark);
+    position: absolute;
+    z-index: 1;
+    min-width: max-content;
+    bottom: calc(100% + 10px);
+    left: 0;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    gap: 0.5rem;
+    align-items: center;
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.1s linear;
+}
+
+.tooltip-widget-container::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    right: calc(100% - 27px);
+    margin-left: -6px;
+    border-width: 6px;
+    border-style: solid;
+    border-color: var(--font-color--dark) transparent transparent transparent;
+}
+
+.tooltip-trigger .tooltip-widget-container .icon-wrapper {
+    padding: 0 0.5rem;
+}
+
+.tooltip-trigger .tooltip-widget-container .icon-wrapper .icon {
+    text-transform: none;
+    font-size: large;
+    font-weight: 300;
+}
+
+.tooltip-trigger .tooltip-widget-container .title-and-body-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.tooltip-trigger .tooltip-widget-container .title-and-body-wrapper .title {
+    /* Intentionally empty class, needed for adding custom styles while implementing the widget */
+}
+
+.tooltip-trigger .tooltip-widget-container .title-and-body-wrapper .body {
+    text-transform: none;
+}

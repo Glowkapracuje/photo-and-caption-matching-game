@@ -56,7 +56,6 @@ const GameStateServiceIIFE = (function () {
     function updateGameStateWithColorTheme(event) {
         ColorThemeServiceIIFE.changeTheme(event.target.value)
         GAME_STATE.colorTheme = event.target.value;
-
     }
 
     function updateGameStateCurrentVehicle(nextVehicleIndex) {
