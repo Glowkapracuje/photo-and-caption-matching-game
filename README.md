@@ -4,11 +4,10 @@
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/Glowkapracuje/photo-and-caption-matching-game)
 ![GitHub repo size](https://img.shields.io/github/repo-size/Glowkapracuje/photo-and-caption-matching-game?color=lightgrey)
 
-**A photo** of an item and several **captions** appear.</br>
-One of the captions is the **correct name of the item**.</br>
-**The speech synthesizer** says the correct name.
 
-Your challenge is to **match the caption to the photo**.
+The game begins by showing a **photo** and some possible **captions** for it.</br>
+The correct caption is read by the **Speech Synthesizer**.</br>
+The challenge is to **match the caption to the photo**.
 
 
 <!-- LIVE DEMO -->
@@ -18,15 +17,14 @@ Currently best to run on Chrome:</br>
 
 [<img src="./src/resources/images/demo-screens/01-main-demo-image.jpg" width="100%"/>](./src/resources/images/demo-screens/01-main-demo-image.jpg)
 
-Running unit tests in a browser.</br>
-Everything has been written from scratch, the project does not use any external library:<br>
+## Unit tests are run in the browser
+The execution and presentation of the detailed results (including error stack trace) take place on this page:<br>
 ***https://glowkapracuje.github.io/photo-and-caption-matching-game/tests/test-runner.html***
 
-[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="50%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
-
+[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="49.8%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
+[<img src="./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg" width="49.8%"/>](./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg)
 <!-- ROADMAP -->
 ## Roadmap
-
 - [x] **Allow to change settings**
     - [x] Add input for disabling all sounds
     - [x] Add input for disabling the Speech Synthesis when new item appears  
@@ -71,6 +69,12 @@ Everything has been written from scratch, the project does not use any external 
     - [x] Radio
     - [x] Slider
     - [x] Tags 
+    - [x] Tooltip
+- [ ] **Helpers**
+    - [x] ArrayHelper
+    - [x] AssertThat 
+    - [ ] PerformanceHelper
+    - [x] StringHelper
 - [ ] **Provide support for browsers other than chrome**
 - [ ] **Documentation** 
     - [x] Helpers 
@@ -84,14 +88,14 @@ Everything has been written from scratch, the project does not use any external 
         - [x] Test result visible on page
             - [x] Mobile view 
             - [x] Display error stack trace (for failed and expected error results) 
-        - [x] Separate dev code and app code 
+        - [x] Separate tests and application code 
 
 
 <!-- TECHNICAL STUFF -->
 ## Technical stuff
 
-* This project does not use any external libriaries.</br>
-* The whole js code has been written using Vanilla JS ( ͡° ͜ʖ ͡°)</br>
+**This project does not use any framework or any external library.**</br>
+Everything has been written from scratch using Vanilla JS ( ͡° ͜ʖ ͡°) HTML and CSS.</br>
 
 
 <!-- LICENSE -->
