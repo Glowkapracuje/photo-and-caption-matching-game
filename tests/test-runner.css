@@ -1,5 +1,4 @@
 .tests-result-container {
-    font-family: monospace, monospace;
     display: flex;
     flex-direction: row;
     gap: 0.5rem;
@@ -14,7 +13,8 @@
     overflow: hidden;
 }
 
-.tests-result-container table tr {
+.tests-result-container table tbody tr {
+    font-family: monospace, monospace;
     padding: 0.25rem;
     border-top: 1px solid var(--badge-grey--light);
     display: flex;
@@ -22,23 +22,38 @@
     align-items: baseline;
 }
 
-.tests-result-container table tr:last-child {
+.tests-result-container table tbody tr:first-child {
+    margin-top: 5px;
+}
+
+.tests-result-container table tbody tr:last-child {
     border-bottom: 1px solid var(--badge-grey--light);
 }
 
-.tests-result-container table tr:hover .status-badge.status-badge--success {
+.tests-result-container table tbody tr:hover .status-badge.status-badge--success {
     border-color: var(--badge-green--dark);
 }
 
-.tests-result-container table tr:hover .status-badge.status-badge--info {
+.tests-result-container table tbody tr:hover .status-badge.status-badge--info {
     border-color: var(--badge-blue--dark);
 }
 
-.tests-result-container table tr:hover .status-badge.status-badge--fail {
+.tests-result-container table tbody tr:hover .status-badge.status-badge--fail {
     border-color: var(--badge-red--dark);
 }
 
+.tests-result-container table thead th {
+    text-align: left;
+    font-weight: 500;
+    padding: 0.5rem;
+    background-color: var(--badge-grey--light);
+    color: var(--badge-grey--dark);
+    font-style: italic;
+    line-height: 1rem;
+}
+
 .tests-statistics-container {
+    font-family: monospace, monospace;
     display: flex;
     flex-direction: column;
     color: var(--badge-yellow--dark);
@@ -104,12 +119,8 @@
 }
 
 @media only screen and (max-width: 1200px) {
-    .tests-result-container table tr {
+    .tests-result-container table tbody tr {
         flex-wrap: wrap;
-    }
-
-    .tests-result-container table tr:first-child {
-        border: none;
     }
 }
 

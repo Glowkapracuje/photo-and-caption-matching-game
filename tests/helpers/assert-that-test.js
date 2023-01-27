@@ -60,58 +60,46 @@
 
     test(moduleName, 'valuesEqual', 'should throw an error if the provided object arrays are not the same', true, () => {
         // given
-        let firstSimpleObject =
-            [
-                {
-                    vehicle: {
-                        name: 'monster-truck',
-                    },
-                    animal: {
-                        name: 'elephant',
-                    }
-                }
-            ];
+        let firstSimpleObject = [{
+            vehicle: {
+                name: 'monster-truck',
+            },
+            animal: {
+                name: 'elephant',
+            }
+        }];
 
-        let secondSimpleObject =
-            [
-                {
-                    vehicle: {
-                        name: 'snowplow',
-                    },
-                    animal: {
-                        name: 'shark',
-                    }
-                }
-            ];
+        let secondSimpleObject = [{
+            vehicle: {
+                name: 'snowplow',
+            },
+            animal: {
+                name: 'shark',
+            }
+        }];
         // when & then
         AssertThat.valuesEqual(firstSimpleObject, secondSimpleObject);
     });
 
     test(moduleName, 'valuesEqual', 'should not throw an error if the provided object arrays are the same', false, () => {
         // given
-        let firstSimpleObject =
-            [
-                {
-                    vehicle: {
-                        name: 'monster-truck',
-                    },
-                    animal: {
-                        name: 'elephant',
-                    }
-                }
-            ];
+        let firstSimpleObject = [{
+            vehicle: {
+                name: 'monster-truck',
+            },
+            animal: {
+                name: 'elephant',
+            }
+        }];
 
-        let secondSimpleObject =
-            [
-                {
-                    vehicle: {
-                        name: 'monster-truck',
-                    },
-                    animal: {
-                        name: 'elephant',
-                    }
-                }
-            ];
+        let secondSimpleObject = [{
+            vehicle: {
+                name: 'monster-truck',
+            },
+            animal: {
+                name: 'elephant',
+            }
+        }];
         // when & then
         AssertThat.valuesEqual(firstSimpleObject, secondSimpleObject);
     });
@@ -151,6 +139,40 @@
     test(moduleName, 'notContains', 'should not throw an error when the array does not contain the given value', false, () => {
         // given, when & then
         AssertThat.notContains(EXAMPLE_LETTER_ARRAY, 666);
+    });
+
+    test(moduleName, 'theSameReferrence', 'should pass when the objects have the same reference', false, () => {
+        // given
+        let firstObject = new String('example text');
+
+        // when & then
+        AssertThat.theSameReferrence(firstObject, firstObject);
+    });
+
+    test(moduleName, 'theSameReferrence', 'should throw an error when the objects have not the same reference', true, () => {
+        // given
+        let firstObject = new String('first example text');
+        let secondObject = new String('second example text');
+
+        // when & then
+        AssertThat.theSameReferrence(firstObject, secondObject);
+    });
+
+    test(moduleName, 'differentReference', 'should pass when the objects have different references', false, () => {
+        // given
+        let firstObject = new String('example text');
+        let secondObject = new String('example text');
+
+        // when & then
+        AssertThat.differentReference(firstObject, secondObject);
+    });
+
+    test(moduleName, 'differentReference', 'should throw an error when the objects have the same reference', true, () => {
+        // given
+        let firstObject = new String('example text');
+
+        // when & then
+        AssertThat.differentReference(firstObject, firstObject);
     });
 
 })();

@@ -21,8 +21,8 @@ Currently best to run on Chrome:</br>
 The execution and presentation of the detailed results (including error stack trace) take place on this page:<br>
 ***https://glowkapracuje.github.io/photo-and-caption-matching-game/tests/test-runner.html***
 
-[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="49.5%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
-[<img src="./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg" width="49.5%"/>](./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg)
+[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="49%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
+[<img src="./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg" width="49%"/>](./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg)
 <!-- ROADMAP -->
 ## Roadmap
 - [x] **Allow to change settings**
@@ -79,8 +79,9 @@ The execution and presentation of the detailed results (including error stack tr
 - [ ] **Documentation** 
     - [x] Helpers 
         - [x] Array Helper IIFE module
-        - [x] String Helper IIFE module  
         - [x] Assert That Helper IIFE module
+        - [ ] Performance Time IIFE helper module
+        - [x] String Helper IIFE module  
     - [ ] Services 
 - [x] **Tests** 
     - [x] Introduce an approach for unit tests without external libraries 
