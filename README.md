@@ -21,8 +21,8 @@ Currently best to run on Chrome:</br>
 The execution and presentation of the detailed results (including error stack trace) take place on this page:<br>
 ***https://glowkapracuje.github.io/photo-and-caption-matching-game/tests/test-runner.html***
 
-[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="49.8%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
-[<img src="./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg" width="49.8%"/>](./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg)
+[<img src="./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg" width="49.5%"/>](./src/resources/images/demo-screens/02-running-unit-tests-and-displaying-in-browser.jpg)
+[<img src="./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg" width="49.5%"/>](./src/resources/images/demo-screens/03-running-unit-tests-and-displaying-in-browser.jpg)
 <!-- ROADMAP -->
 ## Roadmap
 - [x] **Allow to change settings**
