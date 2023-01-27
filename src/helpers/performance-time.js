@@ -25,6 +25,10 @@ const PerformanceTime = (function () {
             _resetTiming();
         }
 
+        isRunning = function () {
+            return performance.isRunning;
+        }
+
         getTotalTime = function () {
             return performance.totalTime;
         }
@@ -41,6 +45,7 @@ const PerformanceTime = (function () {
             pauseTiming: pauseTiming,
             endTiming: endTiming,
             getTotalTime: getTotalTime,
+            isRunning: isRunning,
         };
     }
 

@@ -1,35 +1,28 @@
 (function () {
     const moduleName = 'PerformanceTime';
 
-    test(moduleName, 'new PerformanceTime()', 'should create 2 independent object instances', true,
+    test(moduleName, 'new PerformanceTime()', 'should create 2 independent object instances', false,
         () => {
             // given & when
             let firstPerformance = new PerformanceTime();
             let secondPerformance = new PerformanceTime();
 
             // then
-            AssertThat.theSameReferrence(firstPerformance, secondPerformance);
+            AssertThat.differentReference(firstPerformance, secondPerformance);
         });
 
         test(moduleName, 'new PerformanceTime()', 'should create 2 object instances that are able to measure time independently', false,
         () => {
-            // given & when
+            // given 
             let firstPerformance = new PerformanceTime();
             let secondPerformance = new PerformanceTime();
 
-            // then
-            AssertThat.theSameReferrence(firstPerformance, firstPerformance);
-        });
-
-        test(moduleName, 'new PerformanceTime()', 'should create 2 object instances that are able to measure time independently', false,
-        () => {
-            // given & when
-            let firstPerformance = new PerformanceTime();
-            let secondPerformance = new PerformanceTime();
+            // when 
+            firstPerformance.startTiming();
+            secondPerformance.startTiming();
+            secondPerformance.endTiming();
 
             // then
-            AssertThat.theSameReferrence(firstPerformance.getTotalTime(), firstPerformance.getTotalTime());
+            AssertThat.valuesNotEqual(firstPerformance.isRunning(),  secondPerformance.isRunning());
         });
-
-
 })();
