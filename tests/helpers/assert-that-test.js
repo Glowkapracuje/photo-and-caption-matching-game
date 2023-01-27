@@ -151,11 +151,28 @@
 
     test(moduleName, 'theSameReferrence', 'should throw an error when the objects have not the same reference', true, () => {
         // given
+        let firstObject = new String('first example text');
+        let secondObject = new String('second example text');
+
+        // when & then
+        AssertThat.theSameReferrence(firstObject, secondObject);
+    });
+
+    test(moduleName, 'differentReference', 'should pass when the objects have different references', false, () => {
+        // given
         let firstObject = new String('example text');
         let secondObject = new String('example text');
 
         // when & then
-        AssertThat.theSameReferrence(firstObject, secondObject);
+        AssertThat.differentReference(firstObject, secondObject);
+    });
+
+    test(moduleName, 'differentReference', 'should throw an error when the objects have the same reference', true, () => {
+        // given
+        let firstObject = new String('example text');
+
+        // when & then
+        AssertThat.differentReference(firstObject, firstObject);
     });
 
 })();

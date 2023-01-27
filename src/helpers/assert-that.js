@@ -80,6 +80,17 @@ const AssertThat = (function () {
     }
 
     /**
+     * Throws an error if the given object's references are the same
+     * @param {any} firstObject 
+     * @param {any} secondObject 
+     * @throws {Error}
+     */
+    function differentReference(firstObject, secondObject) {
+        const errorMessage = `References of given objects: ${JSON.stringify(firstObject)} and ${JSON.stringify(secondObject)}, are the same`;
+        _assert(!Object.is(firstObject, secondObject), errorMessage);
+    }
+
+    /**
      * Throws an error if the array does not contain the value wanted
      * @param {[any]} array 
      * @param {any} valueWanted 
@@ -121,6 +132,7 @@ const AssertThat = (function () {
         valuesEqual: valuesEqual,
         valuesNotEqual: valuesNotEqual,
         theSameReferrence: theSameReferrence,
+        differentReference: differentReference,
         contains: contains,
         notContains: notContains,
     }
