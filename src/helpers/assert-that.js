@@ -7,6 +7,7 @@ const AssertThat = (function () {
     /**
      * Throws an error if the given value is null or undefined
      * @param {any} value 
+     * @throws {Error}
      */
     function notNullOrUndefined(value) {
         const errorMessage = `The provided value is ${JSON.stringify(value)}.`;
@@ -16,6 +17,7 @@ const AssertThat = (function () {
     /**
      * Throws an error if the given value is neither null nor undefined.
      * @param {any} value 
+     * @throws {Error}
      */
     function nullOrUndefined(value) {
         const errorMessage = `The value: ${JSON.stringify(value)} is neither null nor undefined.`;
@@ -25,6 +27,7 @@ const AssertThat = (function () {
     /**
      * Throws an error if the type of the given value is not a string.
      * @param {any} value 
+     * @throws {Error}
      */
     function typeIsString(value) {
         const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}.`;
@@ -35,6 +38,7 @@ const AssertThat = (function () {
      * Throws an error if the given value is an empty string.
      * It also throws an error if the type of the given value is not a string.
      * @param {any} value 
+     * @throws {Error}
      */
     function notEmptyString(value) {
         const errorMessage = `The given value is an empty string.`;
@@ -46,6 +50,7 @@ const AssertThat = (function () {
      * Throws an error if given values are not the same.
      * @param {any} firstValue 
      * @param {any} secondValue 
+     * @throws {Error}
      */
     function valuesEqual(firstValue, secondValue) {
         const errorMessage = `The first value: ${JSON.stringify(firstValue)} is not equal to the second one: ${JSON.stringify(secondValue)}.`;
@@ -56,6 +61,7 @@ const AssertThat = (function () {
      * Throws an error if given values are the same.
      * @param {any} firstValue 
      * @param {any} secondValue 
+     * @throws {Error}
      */
     function valuesNotEqual(firstValue, secondValue) {
         const errorMessage = `The first value: ${JSON.stringify(firstValue)} is equal to the second one: ${JSON.stringify(secondValue)}.`;
@@ -63,9 +69,21 @@ const AssertThat = (function () {
     }
 
     /**
+     * Throws an error if the given object's references are not the same
+     * @param {any} firstObject 
+     * @param {any} secondObject 
+     * @throws {Error}
+     */
+    function theSameReferrence(firstObject, secondObject) {
+        const errorMessage = `References of given objects: ${JSON.stringify(firstObject)} and ${JSON.stringify(secondObject)}, are not the same`;
+        _assert(Object.is(firstObject, secondObject), errorMessage);
+    }
+
+    /**
      * Throws an error if the array does not contain the value wanted
      * @param {[any]} array 
      * @param {any} valueWanted 
+     * @throws {Error}
      */
     function contains(array, valueWanted) {
         const errorMessage = `The array: ${JSON.stringify(array)} does not contain the value: ${JSON.stringify(valueWanted)}.`;
@@ -76,6 +94,7 @@ const AssertThat = (function () {
      * Throws an error if the array contains the value wanted
      * @param {[any]} array 
      * @param {any} valueWanted 
+     * @throws {Error}
      */
     function notContains(array, valueWanted) {
         const errorMessage = `The array: ${JSON.stringify(array)} contains the value: ${JSON.stringify(valueWanted)}.`;
@@ -86,6 +105,7 @@ const AssertThat = (function () {
      * Basic assert method that throws an error if the given condition does not evaluate to true.
      * @param {boolean} condition 
      * @param {string} message custom error message
+     * @throws {Error}
      */
     function _assert(condition, message) {
         if (!condition) {
@@ -100,6 +120,7 @@ const AssertThat = (function () {
         notEmptyString: notEmptyString,
         valuesEqual: valuesEqual,
         valuesNotEqual: valuesNotEqual,
+        theSameReferrence: theSameReferrence,
         contains: contains,
         notContains: notContains,
     }
