@@ -1,8 +1,8 @@
 (function () {
     document.addEventListener("DOMContentLoaded", () => {
         getMainContainers();
-        runTests()
-        createStatistics()
+        createResultTable();
+        runTestsAndGenerateStatistics()
     });
 
     let statusCounter = {
@@ -18,29 +18,30 @@
     })
 
     let testsResultContainer;
-    let resultTable;
     let resultTableBody;
 
     let overallTestCounter = 0;
+    let performanceTime = new PerformanceTime();
 
     function getMainContainers() {
         testsResultContainer = document.getElementById('tests-result-container');
-        resultTable = document.createElement('table');
-        resultTableBody = document.createElement('tbody');
-        resultTable.appendChild(resultTableBody);
-        testsStaticticsWrapper = document.createElement('div');
-        testsStaticticsWrapper.setAttribute('class', 'tests-statistics-container')
-        testsResultContainer.appendChild(resultTable);
-        testsResultContainer.appendChild(testsStaticticsWrapper);
     };
+
+    function runTestsAndGenerateStatistics() {
+        runTests();
+        createStatistics();
+    }
 
     function runTests() {
         tests.forEach(test => {
+            performanceTime.startTiming()
             try {
                 test.testFunctionCallBack()
+                performanceTime.pauseTiming();
                 createTableResultRow(test, TEST_STATUS.passed);
                 statusCounter.passed++;
             } catch (error) {
+                performanceTime.pauseTiming();
                 if (test.isErrorExpected) {
                     createTableResultRow(test, TEST_STATUS.expectedError, error.stack)
                     statusCounter.passed++;
@@ -50,6 +51,7 @@
                     statusCounter.failed++;
                 }
             }
+            performanceTime.endTiming();
             overallTestCounter++;
         })
     }
@@ -95,8 +97,81 @@
         } else {
             tableRow.appendChild(testResultMessage);
         }
-
         resultTableBody.appendChild(tableRow);
+    }
+
+    function createResultTable() {
+        let resultTable = document.createElement('table');
+        resultTableBody = document.createElement('tbody');
+        let tableHead = document.createElement('thead');
+        let th = document.createElement('th');
+        th.innerText =
+            `Unit tests are run in the browser.
+        The module that is responsible for creating and executing tests has been written from scratch.`
+        tableHead.appendChild(th);
+        resultTable.append(tableHead, resultTableBody);
+        testsResultContainer.appendChild(resultTable);
+    }
+
+    function createStatistics() {
+        let testsStaticticsWrapper = document.createElement('div');
+        testsStaticticsWrapper.setAttribute('class', 'tests-statistics-container')
+        testsResultContainer.appendChild(testsStaticticsWrapper);
+        createStatisticsDataAndBadges(testsStaticticsWrapper);
+    }
+
+    function createStatisticsDataAndBadges(parentElementToBeAppendTo) {
+        let numberOfPassedTests = document.createElement('span');
+        let numberOfExpectedErrors = document.createElement('span');
+        let numberOfFailedTests = document.createElement('span');
+        let numberOfAllTests = document.createElement('span');
+        let totalTime = document.createElement('span');
+
+        numberOfPassedTests.innerText = statusCounter.passed;
+        numberOfExpectedErrors = statusCounter.errorExpected;
+        numberOfFailedTests = statusCounter.failed;
+        numberOfAllTests = overallTestCounter;
+        totalTime = `${performanceTime.getTotalTime().toFixed(1)} ms`;
+
+        let statusBadgePassed = document.createElement('span');
+        let statusBadgeExpectedError = document.createElement('span');
+        let statusBadgeFailed = document.createElement('span');
+        let statusBadgeOverallCount = document.createElement('span');
+        let statusBadgeTotalTime = document.createElement('span');
+        
+        statusBadgePassed.setAttribute('class', 'status-badge status-badge--success');
+        statusBadgeExpectedError.setAttribute('class', 'status-badge status-badge--info');
+        statusBadgeFailed.setAttribute('class', 'status-badge status-badge--fail');
+        statusBadgeOverallCount.setAttribute('class', 'status-badge status-badge--neutral');
+        statusBadgeTotalTime.setAttribute('class', 'status-badge status-badge--warning');
+
+        statusBadgePassed.innerText = '✓ PASSED';
+        statusBadgeExpectedError.innerText = '✓ ERROR EXPECTED';
+        statusBadgeFailed.innerText = '✕ FAILED';
+        statusBadgeOverallCount.innerText = '🧪 OVERALL';
+        statusBadgeTotalTime.innerText = '⏱ TOTAL TIME';
+
+        let passedTestsWrapper = document.createElement('div');
+        let expectedErrorsWrapper = document.createElement('div');
+        let failedTestsWrapper = document.createElement('div');
+        let overallNumberOfTestsWrapper = document.createElement('div');
+        let totalTimeWrapper = document.createElement('div');
+
+        passedTestsWrapper.setAttribute('class', 'number-and-badge-wrapper');
+        expectedErrorsWrapper.setAttribute('class', 'number-and-badge-wrapper');
+        failedTestsWrapper.setAttribute('class', 'number-and-badge-wrapper');
+        overallNumberOfTestsWrapper.setAttribute('class', 'number-and-badge-wrapper');
+        totalTimeWrapper.setAttribute('class', 'number-and-badge-wrapper');
+
+        passedTestsWrapper.append(numberOfPassedTests, statusBadgePassed);
+        expectedErrorsWrapper.append(numberOfExpectedErrors, statusBadgeExpectedError);
+        failedTestsWrapper.append(numberOfFailedTests, statusBadgeFailed);
+        overallNumberOfTestsWrapper.append(numberOfAllTests, statusBadgeOverallCount);
+        totalTimeWrapper.append(totalTime, statusBadgeTotalTime);
+
+        parentElementToBeAppendTo.append(
+            passedTestsWrapper, expectedErrorsWrapper, failedTestsWrapper, overallNumberOfTestsWrapper, totalTimeWrapper
+        );
     }
 
     function _createStatusBadgePassed() {
@@ -127,7 +202,6 @@
         return statusBadgeErrorExpected;
     }
 
-    
     function _createStatusBadgeFailed() {
         let statusBadgeFailed = document.createElement('span');
         statusBadgeFailed.setAttribute('class', 'status-badge status-badge--fail');
@@ -140,52 +214,6 @@
         }
         TooltipWidget.generateTooltipWidget(tooltipProperties, statusBadgeFailed);
         return statusBadgeFailed;
-    }
-
-    function createStatistics() {
-        let numberOfPassedTests = document.createElement('span');
-        let numberOfExpectedErrors = document.createElement('span');
-        let numberOfFailedTests = document.createElement('span');
-        let numberOfAllTests = document.createElement('span');
-
-        numberOfPassedTests.innerText = statusCounter.passed;
-        numberOfExpectedErrors = statusCounter.errorExpected;
-        numberOfFailedTests = statusCounter.failed;
-        numberOfAllTests = overallTestCounter;
-
-        let statusBadgePassed = document.createElement('span');
-        let statusBadgeExpectedError = document.createElement('span');
-        let statusBadgeFailed = document.createElement('span');
-        let statusBadgeOverallCount = document.createElement('span');
-
-        statusBadgePassed.setAttribute('class', 'status-badge status-badge--success');
-        statusBadgeExpectedError.setAttribute('class', 'status-badge status-badge--info');
-        statusBadgeFailed.setAttribute('class', 'status-badge status-badge--fail');
-        statusBadgeOverallCount.setAttribute('class', 'status-badge status-badge--warning');
-
-        statusBadgePassed.innerText = '✓ PASSED';
-        statusBadgeExpectedError.innerText = '✓ ERROR EXPECTED';
-        statusBadgeFailed.innerText = '✕ FAILED';
-        statusBadgeOverallCount.innerText = '🧪 OVERALL';
-
-        let passedTestsWrapper = document.createElement('div');
-        let expectedErrorsWrapper = document.createElement('div');
-        let failedTestsWrapper = document.createElement('div');
-        let overallNumberOfTestsWrapper = document.createElement('div');
-
-        passedTestsWrapper.setAttribute('class', 'number-and-badge-wrapper');
-        expectedErrorsWrapper.setAttribute('class', 'number-and-badge-wrapper');
-        failedTestsWrapper.setAttribute('class', 'number-and-badge-wrapper');
-        overallNumberOfTestsWrapper.setAttribute('class', 'number-and-badge-wrapper');
-
-        passedTestsWrapper.append(numberOfPassedTests, statusBadgePassed);
-        expectedErrorsWrapper.append(numberOfExpectedErrors, statusBadgeExpectedError);
-        failedTestsWrapper.append(numberOfFailedTests, statusBadgeFailed);
-        overallNumberOfTestsWrapper.append(numberOfAllTests, statusBadgeOverallCount);
-
-        testsStaticticsWrapper.append(
-            passedTestsWrapper, expectedErrorsWrapper, failedTestsWrapper, overallNumberOfTestsWrapper
-        );
     }
 
 })();
