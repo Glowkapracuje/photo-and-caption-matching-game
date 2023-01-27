@@ -120,7 +120,7 @@
 
         let tooltipProperties = {
             titleText: 'Test status: Passed',
-            bodyText: 'As expected, the tested method has thrown an error.',
+            bodyText: 'The tested method has thrown the expected error.',
             iconText: ''
         }
         TooltipWidget.generateTooltipWidget(tooltipProperties, statusBadgeErrorExpected);

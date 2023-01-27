@@ -11,6 +11,7 @@
 .tooltip-widget-container {
     display: flex;
     flex-direction: row-reverse;
+    justify-content: center;
     background-color: var(--font-color--dark);
     position: absolute;
     z-index: 1;
@@ -28,7 +29,7 @@
 }
 
 .tooltip-widget-container::after {
-    content: " ";
+    content: "";
     position: absolute;
     top: 100%;
     right: calc(100% - 27px);
@@ -36,6 +37,27 @@
     border-width: 6px;
     border-style: solid;
     border-color: var(--font-color--dark) transparent transparent transparent;
+}
+
+@media only screen and (max-width: 400px) {
+    .tooltip-widget-container {
+        position: fixed;
+        top: 10%;
+        bottom: auto;
+        left: 50%;
+        transform: translate(-50%);
+        width: calc(100vw - 64px);
+        min-width: auto;
+        text-align: center;
+    }
+
+    .tooltip-widget-container::after {
+        display: none;
+    }
+
+    .tooltip-trigger .tooltip-widget-container .icon-wrapper {
+        display: none;
+    }
 }
 
 .tooltip-trigger .tooltip-widget-container .icon-wrapper {

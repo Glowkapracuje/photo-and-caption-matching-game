@@ -11,6 +11,7 @@
     word-break: break-word;
     table-layout: fixed;
     width: 100%;
+    overflow: hidden;
 }
 
 .tests-result-container table tr {
@@ -46,6 +47,9 @@
     font-size: x-large;
     padding: 22px 12px;
     gap: 26px;
+    height: calc(100vh - 60px);
+    position: sticky;
+    top: 8px;
 }
 
 .tests-statistics-container .number-and-badge-wrapper {
@@ -122,6 +126,7 @@
         position: sticky;
         top: 8px;
         margin-bottom: 5px;
+        height: auto;
     }
 
     .tests-statistics-container::before {

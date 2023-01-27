@@ -143,7 +143,7 @@
         AssertThat.contains(EXAMPLE_LETTER_ARRAY, EXAMPLE_LETTER_ARRAY[0]);
     });
 
-    test(moduleName, 'notContains', 'should throw an error if the array contains the given value', true, () => {
+    test(moduleName, 'notContains', 'should throw an error if the array contains the given value', false, () => {
         // given, when & then
         AssertThat.notContains(EXAMPLE_LETTER_ARRAY, EXAMPLE_LETTER_ARRAY[0]);
     });
