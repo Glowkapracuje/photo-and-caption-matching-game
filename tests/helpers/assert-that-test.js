@@ -12,6 +12,10 @@
     const FIRST_OBJECT_ARRAY = [{ a: 1, b: 2 }]
     const SECOND_OBJECT_ARRAY = [{ a: 1, b: 2 }]
     const EXAMPLE_LETTER_ARRAY = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
+    const EXAMPLE_NUMBER = 3; 
+    const EXAMPLE_DECIMAL_NUMBER = 3.14;
+    const EXAMPLE_NUMBER_WITH_SCIENTIFIC_NOTATION = 123e5;
+    const EXAMPLE_NUMBER_OBJECT_WRAPPED = Number(666);
 
     test(moduleName, 'notNullOrUndefined', 'should throw an error if the provided value is null or undefined', true, () => {
         // given, when & then
@@ -46,6 +50,19 @@
         AssertThat.typeIsString(DOUBLE_QUOTES_STRING);
         AssertThat.typeIsString(BACKTICKS_STRING);
         AssertThat.typeIsString(STRING_OBJECT_WRAPPED);
+    });
+
+    test(moduleName, 'typeIsNumber', 'should throw an error if the provided value is not a number', true, () => {
+        // given, when & then
+        AssertThat.typeIsNumber(SINGLE_QUOTES_STRING);
+    });
+
+    test(moduleName, 'typeIsNumber', 'should not throw an error if the provided value is a number', false, () => {
+        // given, when & then
+        AssertThat.typeIsNumber(EXAMPLE_NUMBER);
+        AssertThat.typeIsNumber(EXAMPLE_DECIMAL_NUMBER);
+        AssertThat.typeIsNumber(EXAMPLE_NUMBER_WITH_SCIENTIFIC_NOTATION);
+        AssertThat.typeIsNumber(EXAMPLE_NUMBER_OBJECT_WRAPPED);
     });
 
     test(moduleName, 'notEmptyString', 'should throw an error if the provided value is an empty string', true, () => {
