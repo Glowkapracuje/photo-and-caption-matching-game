@@ -30,8 +30,18 @@ const AssertThat = (function () {
      * @throws {Error}
      */
     function typeIsString(value) {
-        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}.`;
+        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}, not a string.`;
         _assert(value.constructor.name === 'String', errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not a number.
+     * @param {any} value 
+     * @throws {Error}
+     */
+    function typeIsNumber(value) {
+        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}, not a number.`;
+        _assert(value.constructor.name === 'Number', errorMessage);
     }
 
     /**
@@ -128,6 +138,7 @@ const AssertThat = (function () {
         notNullOrUndefined: notNullOrUndefined,
         nullOrUndefined: nullOrUndefined,
         typeIsString: typeIsString,
+        typeIsNumber: typeIsNumber,
         notEmptyString: notEmptyString,
         valuesEqual: valuesEqual,
         valuesNotEqual: valuesNotEqual,
