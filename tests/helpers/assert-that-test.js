@@ -12,7 +12,7 @@
     const FIRST_OBJECT_ARRAY = [{ a: 1, b: 2 }]
     const SECOND_OBJECT_ARRAY = [{ a: 1, b: 2 }]
     const EXAMPLE_LETTER_ARRAY = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];
-    const EXAMPLE_NUMBER = 3; 
+    const EXAMPLE_NUMBER = 3;
     const EXAMPLE_DECIMAL_NUMBER = 3.14;
     const EXAMPLE_NUMBER_WITH_SCIENTIFIC_NOTATION = 123e5;
     const EXAMPLE_NUMBER_OBJECT_WRAPPED = Number(666);
@@ -28,15 +28,15 @@
         AssertThat.notNullOrUndefined(EXAMPLE_VALUE_NOT_NULL_NOT_UNDEFINED);
     });
 
+    test(moduleName, 'nullOrUndefined', 'should throw an error if the provided value is neither null nor undefined', true, () => {
+        // given, when & then
+        AssertThat.nullOrUndefined(EXAMPLE_VALUE_NOT_NULL_NOT_UNDEFINED);
+    });
+
     test(moduleName, 'nullOrUndefined', 'should not throw an error if the provided value is null or undefined', false, () => {
         // given, when & then
         AssertThat.nullOrUndefined(null);
         AssertThat.nullOrUndefined(undefined);
-    });
-
-    test(moduleName, 'nullOrUndefined', 'should throw an error if the provided value is neither null nor undefined', true, () => {
-        // given, when & then
-        AssertThat.nullOrUndefined(EXAMPLE_VALUE_NOT_NULL_NOT_UNDEFINED);
     });
 
     test(moduleName, 'typeIsString', 'should throw an error if the provided value is not a string', true, () => {
@@ -63,6 +63,46 @@
         AssertThat.typeIsNumber(EXAMPLE_DECIMAL_NUMBER);
         AssertThat.typeIsNumber(EXAMPLE_NUMBER_WITH_SCIENTIFIC_NOTATION);
         AssertThat.typeIsNumber(EXAMPLE_NUMBER_OBJECT_WRAPPED);
+    });
+
+    test(moduleName, 'typeIsBoolean', 'should throw an error if the provided value is not a boolean', true, () => {
+        // given, when & then
+        AssertThat.typeIsBoolean(SINGLE_QUOTES_STRING);
+    });
+
+    test(moduleName, 'typeIsBoolean', 'should not throw an error if the provided value a boolean', false, () => {
+        // given, when & then
+        AssertThat.typeIsBoolean(true);
+    });
+
+    test(moduleName, 'typeIsArray', 'should throw an error if the provided value is not an array', true, () => {
+        // given, when & then
+        AssertThat.typeIsArray(SINGLE_QUOTES_STRING);
+    });
+
+    test(moduleName, 'typeIsArray', 'should not throw an error if the provided value an array', false, () => {
+        // given, when & then
+        AssertThat.typeIsArray(FIRST_SIMPLE_NUMBER_ARRAY);
+    });
+
+    test(moduleName, 'valueIsTrue', 'should throw an error if the provided value is not true', true, () => {
+        // given, when & then
+        AssertThat.valueIsTrue(false);
+    });
+
+    test(moduleName, 'valueIsTrue', 'should not throw an error if the provided value is true', false, () => {
+        // given, when & then
+        AssertThat.valueIsTrue(true);
+    });
+
+    test(moduleName, 'valueIsFalse', 'should throw an error if the provided value is not false', true, () => {
+        // given, when & then
+        AssertThat.valueIsFalse(true);
+    });
+
+    test(moduleName, 'valueIsFalse', 'should not throw an error if the provided value is false', false, () => {
+        // given, when & then
+        AssertThat.valueIsFalse(false);
     });
 
     test(moduleName, 'notEmptyString', 'should throw an error if the provided value is an empty string', true, () => {
@@ -121,7 +161,7 @@
         AssertThat.valuesEqual(firstSimpleObject, secondSimpleObject);
     });
 
-    test(moduleName, 'valuesEqual', 'should throw an error if the provided values are not the same', true, () => {
+    test(moduleName, 'valuesEqual', 'should throw an error if the provided values are different', true, () => {
         // given, when & then
         AssertThat.valuesEqual(EMPTY_STRING, NOT_EMPTY_STRING);
     });
@@ -136,6 +176,11 @@
         // given, when & then
         AssertThat.valuesNotEqual(FIRST_SIMPLE_NUMBER_ARRAY, SECOND_SIMPLE_NUMBER_ARRAY);
         AssertThat.valuesNotEqual(FIRST_OBJECT_ARRAY, SECOND_OBJECT_ARRAY);
+    });
+
+    test(moduleName, 'valuesNotEqual', 'should not throw an error if the provided values are different', false, () => {
+        // given, when & then
+        AssertThat.valuesNotEqual(SINGLE_QUOTES_STRING, DOUBLE_QUOTES_STRING);
     });
 
     test(moduleName, 'contains', 'should throw an error if the array does not contain the given value', true, () => {
@@ -158,14 +203,6 @@
         AssertThat.notContains(EXAMPLE_LETTER_ARRAY, 666);
     });
 
-    test(moduleName, 'theSameReferrence', 'should pass when the objects have the same reference', false, () => {
-        // given
-        let firstObject = new String('example text');
-
-        // when & then
-        AssertThat.theSameReferrence(firstObject, firstObject);
-    });
-
     test(moduleName, 'theSameReferrence', 'should throw an error when the objects have not the same reference', true, () => {
         // given
         let firstObject = new String('first example text');
@@ -175,13 +212,12 @@
         AssertThat.theSameReferrence(firstObject, secondObject);
     });
 
-    test(moduleName, 'differentReference', 'should pass when the objects have different references', false, () => {
+    test(moduleName, 'theSameReferrence', 'should pass when the objects have the same reference', false, () => {
         // given
         let firstObject = new String('example text');
-        let secondObject = new String('example text');
 
         // when & then
-        AssertThat.differentReference(firstObject, secondObject);
+        AssertThat.theSameReferrence(firstObject, firstObject);
     });
 
     test(moduleName, 'differentReference', 'should throw an error when the objects have the same reference', true, () => {
@@ -190,6 +226,15 @@
 
         // when & then
         AssertThat.differentReference(firstObject, firstObject);
+    });
+
+    test(moduleName, 'differentReference', 'should pass when the objects have different references', false, () => {
+        // given
+        let firstObject = new String('example text');
+        let secondObject = new String('example text');
+
+        // when & then
+        AssertThat.differentReference(firstObject, secondObject);
     });
 
 })();

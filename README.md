@@ -73,14 +73,14 @@ The execution and presentation of the detailed results (including error stack tr
 - [ ] **Helpers**
     - [x] ArrayHelper
     - [x] AssertThat 
-    - [ ] PerformanceHelper
+    - [x] PerformanceHelper
     - [x] StringHelper
 - [ ] **Provide support for browsers other than chrome**
 - [ ] **Documentation** 
     - [x] Helpers 
         - [x] Array Helper IIFE module
         - [x] Assert That Helper IIFE module
-        - [ ] Performance Time IIFE helper module
+        - [x] Performance Time IIFE helper module
         - [x] String Helper IIFE module  
     - [ ] Services 
 - [x] **Tests** 
