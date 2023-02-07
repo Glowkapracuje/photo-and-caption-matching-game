@@ -30,8 +30,58 @@ const AssertThat = (function () {
      * @throws {Error}
      */
     function typeIsString(value) {
-        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}.`;
+        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}, not a string.`;
         _assert(value.constructor.name === 'String', errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not a number.
+     * @param {any} value 
+     * @throws {Error}
+     */
+    function typeIsNumber(value) {
+        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}, not a number.`;
+        _assert(value.constructor.name === 'Number', errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not a boolean.
+     * @param {any} value 
+     * @throws {Error}
+     */
+    function typeIsBoolean(value) {
+        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}, not a boolean.`;
+        _assert(value.constructor.name === 'Boolean', errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not an array.
+     * @param {any} value 
+     * @throws {Error}
+     */
+    function typeIsArray(value) {
+        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}, not an array.`;
+        _assert(value.constructor.name === 'Array', errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not true.
+     * @param {boolean} value 
+     * @throws {Error} 
+     */
+    function valueIsTrue(value) {
+        const errorMessage = `The value: ${JSON.stringify(value)} is not true.`;
+        _assert(value === true, errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not false.
+     * @param {boolean} value 
+     * @throws {Error} 
+     */
+    function valueIsFalse(value) {
+        const errorMessage = `The value: ${JSON.stringify(value)} is not false.`;
+        _assert(value === false, errorMessage);
     }
 
     /**
@@ -125,16 +175,21 @@ const AssertThat = (function () {
     }
 
     return {
+        contains: contains,
+        differentReference: differentReference,
+        notContains: notContains,
+        notEmptyString: notEmptyString,
         notNullOrUndefined: notNullOrUndefined,
         nullOrUndefined: nullOrUndefined,
+        theSameReferrence: theSameReferrence,
+        typeIsArray: typeIsArray,
+        typeIsBoolean: typeIsBoolean,
+        typeIsNumber: typeIsNumber,
         typeIsString: typeIsString,
-        notEmptyString: notEmptyString,
+        valueIsFalse: valueIsFalse,
+        valueIsTrue: valueIsTrue,
         valuesEqual: valuesEqual,
         valuesNotEqual: valuesNotEqual,
-        theSameReferrence: theSameReferrence,
-        differentReference: differentReference,
-        contains: contains,
-        notContains: notContains,
     }
 
 })();
