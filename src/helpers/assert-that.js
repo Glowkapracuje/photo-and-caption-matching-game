@@ -45,6 +45,46 @@ const AssertThat = (function () {
     }
 
     /**
+     * Throws an error if the type of the given value is not a boolean.
+     * @param {any} value 
+     * @throws {Error}
+     */
+    function typeIsBoolean(value) {
+        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}, not a boolean.`;
+        _assert(value.constructor.name === 'Boolean', errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not an array.
+     * @param {any} value 
+     * @throws {Error}
+     */
+    function typeIsArray(value) {
+        const errorMessage = `The type of the given value: ${JSON.stringify(value)} is a ${typeof value}, not an array.`;
+        _assert(value.constructor.name === 'Array', errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not true.
+     * @param {boolean} value 
+     * @throws {Error} 
+     */
+    function valueIsTrue(value) {
+        const errorMessage = `The value: ${JSON.stringify(value)} is not true.`;
+        _assert(value === true, errorMessage);
+    }
+
+    /**
+     * Throws an error if the type of the given value is not false.
+     * @param {boolean} value 
+     * @throws {Error} 
+     */
+    function valueIsFalse(value) {
+        const errorMessage = `The value: ${JSON.stringify(value)} is not false.`;
+        _assert(value === false, errorMessage);
+    }
+
+    /**
      * Throws an error if the given value is an empty string.
      * It also throws an error if the type of the given value is not a string.
      * @param {any} value 
@@ -135,17 +175,21 @@ const AssertThat = (function () {
     }
 
     return {
+        contains: contains,
+        differentReference: differentReference,
+        notContains: notContains,
+        notEmptyString: notEmptyString,
         notNullOrUndefined: notNullOrUndefined,
         nullOrUndefined: nullOrUndefined,
-        typeIsString: typeIsString,
+        theSameReferrence: theSameReferrence,
+        typeIsArray: typeIsArray,
+        typeIsBoolean: typeIsBoolean,
         typeIsNumber: typeIsNumber,
-        notEmptyString: notEmptyString,
+        typeIsString: typeIsString,
+        valueIsFalse: valueIsFalse,
+        valueIsTrue: valueIsTrue,
         valuesEqual: valuesEqual,
         valuesNotEqual: valuesNotEqual,
-        theSameReferrence: theSameReferrence,
-        differentReference: differentReference,
-        contains: contains,
-        notContains: notContains,
     }
 
 })();

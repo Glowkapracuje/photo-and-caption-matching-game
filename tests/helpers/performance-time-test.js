@@ -11,7 +11,7 @@
             AssertThat.differentReference(firstPerformance, secondPerformance);
         });
 
-        test(moduleName, 'new PerformanceTime()', 'should create 2 object instances that are able to measure time independently', false,
+    test(moduleName, 'new PerformanceTime()', 'should create 2 object instances that are able to measure time independently', false,
         () => {
             // given 
             let firstPerformance = new PerformanceTime();
@@ -23,6 +23,6 @@
             secondPerformance.endTiming();
 
             // then
-            AssertThat.valuesNotEqual(firstPerformance.isRunning(),  secondPerformance.isRunning());
+            AssertThat.valuesNotEqual(firstPerformance.isRunning(), secondPerformance.isRunning());
         });
 })();
