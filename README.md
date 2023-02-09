@@ -70,13 +70,13 @@ The execution and presentation of the detailed results (including error stack tr
     - [x] Slider
     - [x] Tags 
     - [x] Tooltip
-- [ ] **Helpers**
+- [x] **Helpers**
     - [x] ArrayHelper
     - [x] AssertThat 
     - [x] PerformanceHelper
     - [x] StringHelper
 - [ ] **Provide support for browsers other than chrome**
-- [ ] **Documentation** 
+- [x] **Documentation** 
     - [x] Helpers 
         - [x] Array Helper IIFE module
         - [x] Assert That Helper IIFE module
