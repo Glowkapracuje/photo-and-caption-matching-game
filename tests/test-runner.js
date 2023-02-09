@@ -138,7 +138,7 @@
         let statusBadgeFailed = document.createElement('span');
         let statusBadgeOverallCount = document.createElement('span');
         let statusBadgeTotalTime = document.createElement('span');
-        
+
         statusBadgePassed.setAttribute('class', 'status-badge status-badge--success');
         statusBadgeExpectedError.setAttribute('class', 'status-badge status-badge--info');
         statusBadgeFailed.setAttribute('class', 'status-badge status-badge--fail');

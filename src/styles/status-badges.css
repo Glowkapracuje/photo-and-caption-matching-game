@@ -1,11 +1,10 @@
 .status-badge {
-    padding: 0 0.25rem;
+    padding: 0.1rem 0.25rem;
     border-radius: 0.25rem;
     text-transform: uppercase;
     font-size: x-small;
     font-weight: 700;
     flex-shrink: 0;
-    /* ?needed */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -70,71 +69,3 @@
     color: var(--color-white);
     border-color: var(--badge-grey--dark);
 }
-
-/* .status-pill--status-passed::before {
-    background-color: var(--badge-green--light);
-    color: var(--badge-green--dark);
-    content: '✓ PASSED';
-    padding: 0 0.25rem;
-    border-radius: 0.25rem;
-    text-transform: uppercase;
-    font-size: x-small;
-    font-weight: 700;
-    flex-shrink: 0;
-} */
-/* 
-.status-pill--status-passed:hover::before {
-    background-color: var(--badge-green--dark);
-    color: white;
-}
-
-.status-pill--status-failed::before {
-    background-color: var(--badge-red--light);
-    color: var(--badge-red--dark);
-    content: '✕ FAILED';
-    padding: 0 0.25rem;
-    border-radius: 0.25rem;
-    text-transform: uppercase;
-    font-size: x-small;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
-.status-pill--status-failed:hover::before {
-    background-color: var(--badge-red--dark);
-    color: white;
-}
-
-.status-pill--status-expected-error::before {
-    background-color: var(--badge-blue--light);
-    color: var(--badge-blue--dark);
-    content: '✓ EXPECTED ERROR';
-    padding: 0 0.25rem;
-    border-radius: 0.25rem;
-    text-transform: uppercase;
-    font-size: x-small;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
-.status-pill--status-expected-error:hover::before {
-    background-color: var(--badge-blue--dark);
-    color: white;
-}
-
-.status-pill--status-overall-test-number::before {
-    background-color: var(--badge-yellow--light);
-    color: var(--badge-yellow--dark);
-    content: '🧪 OVERALL';
-    padding: 0 0.25rem;
-    border-radius: 0.25rem;
-    text-transform: uppercase;
-    font-size: x-small;
-    font-weight: 700;
-    flex-shrink: 0;
-}
-
-.status-pill--status-overall-test-number:hover::before {
-    background-color: var(--badge-yellow--dark);
-    color: white;
-} */
